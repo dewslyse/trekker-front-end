@@ -8,14 +8,14 @@ const userSlice = createSlice({
     user: {},
   },
   reducers: {
-    signup: (state, { payload }) => {
-      state.isLoggedIn = true;
-      state.user = payload;
-    },
-    login: (state, { payload }) => {
-      state.isLoggedIn = true;
-      state.user = payload;
-    },
+    signup: (state, { payload }) => ({
+      isLoggedIn: payload.logged_in,
+      user: payload.user,
+    }),
+    login: (state, { payload }) => ({
+      isLoggedIn: payload.logged_in,
+      user: payload.user,
+    }),
     logout: (state) => {
       state.isLoggedIn = false;
       state.user = {};
