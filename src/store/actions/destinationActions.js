@@ -1,56 +1,35 @@
 import api from '../../api/apiRequests';
 import { addDestination, createDestinations, removeDestination } from '../reducers/destinationReducer';
-import { hideNotification, showNotification } from '../reducers/uiReducers';
+import { showNotification } from '../reducers/uiReducers';
 
 const fetchDestinations = () => async (dispatch) => {
-  try {
-    const response = await api.get('/destinations');
-    dispatch(createDestinations(response.data));
-    dispatch(hideNotification());
-  } catch (error) {
-    dispatch(showNotification({
-      status: 'error',
-      title: 'Error!',
-      message: error.message,
-    }));
-    setInterval(() => {
-      dispatch(hideNotification());
-    }, 3000);
-  }
+  await api
+    .get('/destinations')
+    .then((res) => dispatch(createDestinations(res.data)))
+    .catch((err) => dispatch(showNotification({
+      message: err.message,
+      isError: true,
+    })));
 };
 
 const addNewDestination = (destination) => async (dispatch) => {
-  try {
-    const response = await api.post('/destinations', destination, { withCredentials: true });
-    dispatch(addDestination(response.data));
-    dispatch(hideNotification());
-  } catch (error) {
-    dispatch(showNotification({
-      status: 'error',
-      title: 'Error!',
-      message: error.message,
-    }));
-    setInterval(() => {
-      dispatch(hideNotification());
-    }, 3000);
-  }
+  await api
+    .post('/destinations', destination, { withCredentials: true })
+    .then((res) => dispatch(addDestination(res.data)))
+    .catch((err) => dispatch(showNotification({
+      message: err.message,
+      isError: true,
+    })));
 };
 
 const deleteDestination = (id) => async (dispatch) => {
-  try {
-    await api.delete(`/destinations/${id}`, { withCredentials: true });
-    dispatch(removeDestination(id));
-    dispatch(hideNotification());
-  } catch (error) {
-    dispatch(showNotification({
-      status: 'error',
-      title: 'Error!',
-      message: error.message,
-    }));
-    setInterval(() => {
-      dispatch(hideNotification());
-    }, 3000);
-  }
+  await api
+    .delete(`/destinations/${id}`, { withCredentials: true })
+    .then(() => dispatch(removeDestination(id)))
+    .catch((err) => dispatch(showNotification({
+      message: err.message,
+      isError: true,
+    })));
 };
 
 export { fetchDestinations, addNewDestination, deleteDestination };
