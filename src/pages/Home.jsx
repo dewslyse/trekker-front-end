@@ -1,29 +1,26 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
+import Login from '../components/Login';
 import Notification from '../components/Notification';
-import { hideNotification } from '../store/reducers/uiReducers';
+import { showLogin } from '../store/reducers/uiReducers';
 
 const Home = () => {
-  const dispatch = useDispatch();
   const notification = useSelector((state) => state.ui.notification);
-  const destinations = useSelector((state) => state.destinations);
+  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+  const login = useSelector((state) => state.ui.login);
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (destinations.length) {
-      dispatch(hideNotification());
-    }
-  }, [notification]);
+  const handleDisplayLogin = () => {
+    dispatch(showLogin());
+  };
 
   return (
     <>
-      {notification && (
-      <Notification
-        title={notification.title}
-        message={notification.message}
-      />
-      )}
+      {notification && (<Notification message={notification.message} />)}
       <div>Sidebar</div>
+      {!isLoggedIn && (<button type="button" onClick={handleDisplayLogin}>Login</button>)}
+      {login && (<Login />)}
       <Outlet />
     </>
   );
