@@ -3,6 +3,7 @@ import { addReservation, removeReservation, fetchReservations } from '../actions
 
 const reservationSlice = createSlice({
   name: 'reservation',
+  initialState: [],
   extraReducers: {
     [addReservation.fulfilled]: (state, { payload }) => {
       state.push(payload);
