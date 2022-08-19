@@ -1,29 +1,42 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
+import {
+  loginUser, registerUser, logoutUser, checkLoginStatus,
+} from '../actions/userActions';
 
 const userSlice = createSlice({
   name: 'user',
   initialState: {
     isLoggedIn: false,
-    user: {},
+    user: null,
   },
-  reducers: {
-    signup: (state, { payload }) => ({
-      isLoggedIn: payload.logged_in,
-      user: payload.user,
-    }),
-    login: (state, { payload }) => ({
-      isLoggedIn: payload.logged_in,
-      user: payload.user,
-    }),
-    logout: (state) => {
+  extraReducers: {
+    [registerUser.fulfilled]: (state, { payload }) => {
+      state.isLoggedIn = payload.logged_in;
+      state.user = payload.user;
+    },
+    [registerUser.rejected]: (state) => {
       state.isLoggedIn = false;
-      state.user = {};
+    },
+    [loginUser.fulfilled]: (state, { payload }) => {
+      state.isLoggedIn = payload.logged_in;
+      state.user = payload.user;
+    },
+    [loginUser.rejected]: (state) => {
+      state.isLoggedIn = false;
+      state.user = null;
+    },
+    [logoutUser.fulfilled]: (state) => {
+      state.isLoggedIn = false;
+      state.user = null;
+    },
+    [checkLoginStatus.fulfilled]: (state, { payload }) => {
+      state.isLoggedIn = payload.logged_in;
+      state.user = payload.user;
     },
   },
 });
 
-const { actions, reducer } = userSlice;
+const { reducer } = userSlice;
 
-export const { signup, login, logout } = actions;
 export default reducer;

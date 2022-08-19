@@ -18,6 +18,9 @@ const uiSlice = createSlice({
     showNotification: (state, { payload }) => {
       state.notification = payload;
     },
+    hideNotification: (state) => {
+      state.notification = initialState.notification;
+    },
     showLogin: (state) => {
       state.login = true;
     },

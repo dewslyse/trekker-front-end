@@ -1,43 +1,52 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import api from '../../api/apiRequests';
-import { login, signup, logout } from '../reducers/userReducer';
 import { showNotification } from '../reducers/uiReducers';
 
-const registerUser = (user) => async (dispatch) => {
-  dispatch(showNotification({
-    message: 'Loading...',
-    isError: false,
-  }));
-  await api
-    .post('/registrations', user, { withCredentials: true })
-    .then((res) => dispatch(signup(res.data)))
-    .catch((err) => dispatch(showNotification({
-      message: err.message,
-      isError: true,
-    })));
-};
+const registerUser = createAsyncThunk(
+  'user/register',
+  async (user, thunkAPI) => {
+    try {
+      const response = await api.post('/registraions', user, { withCredentials: true });
+      thunkAPI.dispatch(showNotification({ message: 'User registered successfully', isError: false }));
+      return response.data;
+    } catch (error) {
+      thunkAPI.dispatch(showNotification({ message: error.message, isError: true }));
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  },
+);
 
-const loginUser = (user) => async (dispatch) => {
-  dispatch(showNotification({
-    message: 'Loading...',
-    isError: false,
-  }));
-  await api
-    .post('/sessions', user, { withCredentials: true })
-    .then((res) => dispatch(login(res.data)))
-    .catch(() => dispatch(showNotification({
-      message: 'Invalid email or password',
-      isError: true,
-    })));
-};
+const loginUser = createAsyncThunk(
+  'user/login',
+  async (user, thunkAPI) => {
+    try {
+      const response = await api.post('/sessions', user, { withCredentials: true });
+      thunkAPI.dispatch(showNotification({ message: 'User logged in successfully', isError: false }));
+      return response.data;
+    } catch (error) {
+      thunkAPI.dispatch(showNotification({ message: 'Invalid username or password', isError: true }));
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  },
+);
 
-const logoutUser = () => async (dispatch) => {
-  await api
-    .delete('/logout', { withCredentials: true })
-    .then(() => dispatch(logout()))
-    .catch((err) => dispatch(showNotification({
-      message: err.message,
-      isError: true,
-    })));
-};
+const logoutUser = createAsyncThunk(
+  'user/logout',
+  async () => { await api.delete('/sessions', { withCredentials: true }); },
+);
 
-export { registerUser, loginUser, logoutUser };
+const checkLoginStatus = createAsyncThunk(
+  'user/checkLoginStatus',
+  async () => {
+    try {
+      const response = await api.get('/logged_in', { withCredentials: true });
+      return response.data;
+    } catch (error) {
+      return { logged_in: false, user: null };
+    }
+  },
+);
+
+export {
+  registerUser, loginUser, logoutUser, checkLoginStatus,
+};
