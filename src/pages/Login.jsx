@@ -3,11 +3,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { loginUser } from '../store/actions/userActions';
+import { hideNotification } from '../store/reducers/uiReducers';
 
 const Login = () => {
   const userRef = useRef();
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+  const [loading, setLoading] = useState(false);
 
   const [user, setUser] = useState({
     username: '',
@@ -27,7 +29,11 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(loginUser(user));
+    setLoading(true);
+    dispatch(loginUser(user))
+      .unwrap()
+      .then(() => { setTimeout(() => dispatch(hideNotification()), 2000); })
+      .catch(() => { setLoading(false); });
     setUser({
       username: '',
       password: '',
@@ -39,7 +45,7 @@ const Login = () => {
       {isLoggedIn && (<Navigate to="/destinations/1" replace />)}
       <section>
         <h1>Sign In</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} method="">
           <label htmlFor="username">Username</label>
           <input
             type="text"
@@ -62,6 +68,7 @@ const Login = () => {
           <button type="submit">Sign In</button>
         </form>
       </section>
+      {loading && <p>Loading...</p>}
     </>
   );
 };
