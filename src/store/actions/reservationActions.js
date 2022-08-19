@@ -1,35 +1,46 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import api from '../../api/apiRequests';
-import { createReservations, addReservation, removeReservation } from '../reducers/reservationReducer';
 import { showNotification } from '../reducers/uiReducers';
 
-const fetchReservations = () => async (dispatch) => {
-  await api
-    .get('/destinations/:id/reservations')
-    .then((res) => dispatch(createReservations(res.data)))
-    .catch((err) => dispatch(showNotification({
-      message: err.message,
-      isError: true,
-    })));
-};
+const fetchReservations = createAsyncThunk(
+  'reservation/fetch',
+  async (thunkAPI) => {
+    try {
+      const response = await api.get('/destinations/:id/reservations', { withCredentials: true });
+      return response.data;
+    } catch (error) {
+      thunkAPI.dispatch(showNotification({ message: error.message, isError: true }));
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  },
+);
 
-const addNewReservation = (reservation, id) => async (dispatch) => {
-  await api
-    .post(`/destinations/${id}/reservations`, reservation, { withCredentials: true })
-    .then((res) => dispatch(addReservation(res.data)))
-    .catch((err) => dispatch(showNotification({
-      message: err.message,
-      isError: true,
-    })));
-};
+const addReservation = createAsyncThunk(
+  'reservation/add',
+  async (reservation, id, thunkAPI) => {
+    try {
+      const response = await api.post(`/destinations/${id}/reservations`, reservation, { withCredentials: true });
+      thunkAPI.dispatch(showNotification({ message: 'Reservation added successfully', isError: false }));
+      return response.data;
+    } catch (error) {
+      thunkAPI.dispatch(showNotification({ message: error.message, isError: true }));
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  },
+);
 
-const deleteReservation = (id) => async (dispatch) => {
-  await api
-    .delete(`destinations/:id/reservations/${id}`, { withCredentials: true })
-    .then(() => dispatch(removeReservation(id)))
-    .catch((err) => dispatch(showNotification({
-      message: err.message,
-      isError: true,
-    })));
-};
+const removeReservation = createAsyncThunk(
+  'reservation/remove',
+  async (id, thunkAPI) => {
+    try {
+      await api.delete(`/destinations/:id/reservations/${id}`, { withCredentials: true });
+      thunkAPI.dispatch(showNotification({ message: 'Reservation removed successfully', isError: false }));
+      return id;
+    } catch (error) {
+      thunkAPI.dispatch(showNotification({ message: error.message, isError: true }));
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  },
+);
 
-export { fetchReservations, addNewReservation, deleteReservation };
+export { fetchReservations, addReservation, removeReservation };

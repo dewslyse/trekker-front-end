@@ -1,23 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { addReservation, removeReservation, fetchReservations } from '../actions/reservationActions';
 
 const reservationSlice = createSlice({
   name: 'reservation',
-  initialState: [],
-  reducers: {
-    createReservations: (state, { payload }) => payload,
-
-    addReservation: (state, { payload }) => {
+  extraReducers: {
+    [addReservation.fulfilled]: (state, { payload }) => {
       state.push(payload);
     },
-
-    removeReservation: (state, { payload }) => {
+    [removeReservation.fulfilled]: (state, { payload }) => {
       state.filter((reservation) => reservation.id !== payload);
     },
+    [fetchReservations.fulfilled]: (state, { payload }) => payload,
   },
 });
 
-const { actions, reducer } = reservationSlice;
-
-export const { createReservations, addReservation, removeReservation } = actions;
+const { reducer } = reservationSlice;
 
 export default reducer;

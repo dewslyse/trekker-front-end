@@ -1,35 +1,46 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import api from '../../api/apiRequests';
-import { addDestination, createDestinations, removeDestination } from '../reducers/destinationReducer';
 import { showNotification } from '../reducers/uiReducers';
 
-const fetchDestinations = () => async (dispatch) => {
-  await api
-    .get('/destinations')
-    .then((res) => dispatch(createDestinations(res.data)))
-    .catch((err) => dispatch(showNotification({
-      message: err.message,
-      isError: true,
-    })));
-};
+const addDestination = createAsyncThunk(
+  'destination/add',
+  async (destination, thunkAPI) => {
+    try {
+      const response = await api.post('/destinations', destination, { withCredentials: true });
+      thunkAPI.dispatch(showNotification({ message: 'Destination added successfully', isError: false }));
+      return response.data;
+    } catch (error) {
+      thunkAPI.dispatch(showNotification({ message: error.message, isError: true }));
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  },
+);
 
-const addNewDestination = (destination) => async (dispatch) => {
-  await api
-    .post('/destinations', destination, { withCredentials: true })
-    .then((res) => dispatch(addDestination(res.data)))
-    .catch((err) => dispatch(showNotification({
-      message: err.message,
-      isError: true,
-    })));
-};
+const removeDestination = createAsyncThunk(
+  'destination/remove',
+  async (id, thunkAPI) => {
+    try {
+      await api.delete(`/destinations/${id}`, { withCredentials: true });
+      thunkAPI.dispatch(showNotification({ message: 'Destination removed successfully', isError: false }));
+      return id;
+    } catch (error) {
+      thunkAPI.dispatch(showNotification({ message: error.message, isError: true }));
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  },
+);
 
-const deleteDestination = (id) => async (dispatch) => {
-  await api
-    .delete(`/destinations/${id}`, { withCredentials: true })
-    .then(() => dispatch(removeDestination(id)))
-    .catch((err) => dispatch(showNotification({
-      message: err.message,
-      isError: true,
-    })));
-};
+const fetchDestinations = createAsyncThunk(
+  'destination/fetch',
+  async (thunkAPI) => {
+    try {
+      const response = await api.get('destinations', { withCredentials: true });
+      return response.data;
+    } catch (error) {
+      thunkAPI.dispatch(showNotification({ message: error.message, isError: true }));
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  },
+);
 
-export { fetchDestinations, addNewDestination, deleteDestination };
+export { fetchDestinations, addDestination, removeDestination };

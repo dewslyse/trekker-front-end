@@ -2,9 +2,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  isSelected: false,
-  login: false,
-  signup: false,
   notification: {
     message: '',
     isError: false,
@@ -21,24 +18,10 @@ const uiSlice = createSlice({
     hideNotification: (state) => {
       state.notification = initialState.notification;
     },
-    showLogin: (state) => {
-      state.login = true;
-    },
-    hideLogin: (state) => {
-      state.login = false;
-    },
-    showSignup: (state) => {
-      state.signup = false;
-    },
-    hideSignup: (state) => {
-      state.signup = false;
-    },
   },
 });
 
 const { actions, reducer } = uiSlice;
 
-export const {
-  showNotification, hideNotification, showLogin, showSignup, hideLogin, hideSignup,
-} = actions;
+export const { showNotification, hideNotification } = actions;
 export default reducer;
