@@ -32,7 +32,10 @@ const Login = () => {
     setLoading(true);
     dispatch(loginUser(user))
       .unwrap()
-      .then(() => { setTimeout(() => dispatch(hideNotification()), 2000); })
+      .then(() => {
+        localStorage.setItem('LOGGED_IN', true);
+        setTimeout(() => dispatch(hideNotification()), 2000);
+      })
       .catch(() => { setLoading(false); });
     setUser({
       username: '',

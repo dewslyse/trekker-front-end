@@ -1,9 +1,8 @@
 import React from 'react';
 import { useLocation, Navigate, Outlet } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 const RequireAuth = () => {
-  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+  const isLoggedIn = localStorage.getItem('LOGGED_IN');
   const location = useLocation();
   return (
     isLoggedIn ? <Outlet /> : <Navigate to="/login" state={{ from: location }} replace />

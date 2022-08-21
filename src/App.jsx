@@ -9,12 +9,20 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import { checkLoginStatus } from './store/actions/userActions';
 import RequireAuth from './components/RequireAuth';
+import { login } from './store/reducers/userReducer';
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchDestinations());
+  }, []);
+
+  useEffect(() => {
+    const loggedIn = localStorage.getItem('LOGGED_IN');
+    if (loggedIn) {
+      dispatch(login());
+    }
   }, []);
 
   useEffect(() => {
