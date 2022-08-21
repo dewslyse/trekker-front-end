@@ -55,13 +55,13 @@ const Reservations = () => {
                   value={startDate}
                   onChange={(newValue) => {
                     setStartDate(newValue);
-                    console.log(startDate.toLocaleString())
+                    console.log(startDate.toLocaleString());
                   }}
                 />
 
                 <DropdownButton align="end" title={title} id="down">
                   {destinations.map((destination) => {
-                    if (destination.id == parseInt(id, 10)) {
+                    if (destination.id === parseInt(id, 10)) {
                       return (<Dropdown.Item eventKey="1" onClick={() => setTitle(destination.city_name)}>{destination.city_name}</Dropdown.Item>);
                     }
                     return '';
