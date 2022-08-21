@@ -32,7 +32,7 @@ const loginUser = createAsyncThunk(
 
 const logoutUser = createAsyncThunk(
   'user/logout',
-  async () => { await api.delete('/sessions', { withCredentials: true }); },
+  async () => { await api.delete('/logout', { withCredentials: true }); },
 );
 
 const checkLoginStatus = createAsyncThunk(
