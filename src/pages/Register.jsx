@@ -71,7 +71,7 @@ const Register = () => {
     dispatch(registerUser(user))
       .unwrap()
       .then(() => {
-        localStorage.setItem('LOGGED_IN', true);
+        localStorage.setItem('LOGGED_IN', { username: user.username });
         setTimeout(() => dispatch(hideNotification()), 2000);
       })
       .catch(() => { setLoading(false); });
@@ -143,7 +143,7 @@ const Register = () => {
             required
           />
           {errors.password_confirmation && <p className="error">{errors.password_confirmation}</p>}
-          <button type="submit">Sign In</button>
+          <button type="submit">Register</button>
         </form>
       </section>
       {loading && <p>Loading...</p>}
