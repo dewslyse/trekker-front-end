@@ -12,8 +12,8 @@ const Home = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem('LOGGED_IN');
     navigate('/');
+    localStorage.removeItem('LOGGED_IN');
     dispatch(logout());
     dispatch(logoutUser());
   };

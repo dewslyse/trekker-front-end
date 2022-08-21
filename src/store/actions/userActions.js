@@ -6,7 +6,7 @@ const registerUser = createAsyncThunk(
   'user/register',
   async (user, thunkAPI) => {
     try {
-      const response = await api.post('/registraions', user, { withCredentials: true });
+      const response = await api.post('/registrations', user, { withCredentials: true });
       thunkAPI.dispatch(showNotification({ message: 'User registered successfully', isError: false }));
       return response.data;
     } catch (error) {
