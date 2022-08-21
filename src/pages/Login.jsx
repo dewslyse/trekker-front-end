@@ -42,7 +42,7 @@ const Login = () => {
 
   return (
     <>
-      {isLoggedIn && (<Navigate to="/destinations/1" replace />)}
+      {isLoggedIn && (<Navigate to="/destinations" replace />)}
       <section>
         <h1>Sign In</h1>
         <form onSubmit={handleSubmit} method="">
