@@ -21,7 +21,7 @@ const fetchReservations = () => async (dispatch) => {
 
 const addNewReservation = (reservation, id) => async (dispatch) => {
   try {
-    const response = await api.post(`/destinations/${id}/reservations`, reservation, { withCredentials: true });
+    const response = await api.post(`/destinations/${id}/reservations`, reservation);
     dispatch(addReservation(response.data));
     dispatch(hideNotification());
   } catch (error) {

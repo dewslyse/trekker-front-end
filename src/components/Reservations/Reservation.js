@@ -1,47 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { useSelector, useDispatch } from 'react-redux';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import { useParams } from 'react-router-dom';
 import { addNewReservation } from '../../store/actions/reservationActions';
-import { fetchDestinations } from '../../store/actions/destinationActions';
+
 import 'react-datepicker/dist/react-datepicker.css';
 
 const Reservations = () => {
   const [startDate, setStartDate] = useState(new Date());
-  const [title, setTitle] = useState('Location');
+  const [title, setTitle] = useState();
   const destinations = useSelector((state) => state.destinations);
 
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchDestinations());
-  }, []);
 
-  const { user_id: userId, destination_id: destinationId } = useParams();
-  const [roomId, setRoomId] = useState(destinationId);
-  const createReservation = () => {
-    const postData = [
-      {
-        user_id: parseInt(userId, 10),
-        destination_id: parseInt(roomId, 10),
-        start_date: startDate.toLocaleDateString(),
-      },
-    ];
-
-    dispatch(addNewReservation(postData));
+  const { id } = useParams();
+  const createReservation = (e) => {
+    e.preventDefault();
+    const reservation = {
+      destination_id: title,
+      start_date: startDate.toLocaleDateString(),
+      end_date: startDate.toLocaleDateString(),
+      fee: 20.21,
+    };
+    dispatch(addNewReservation(JSON.stringify(reservation), reservation.destination_id));
   };
-
-  let image = '';
-  let location = '';
-
-  destinations.map((element) => {
-    if (element.id === parseInt(destinationId, 10)) {
-      image = element.image_url;
-      location = element.address;
-    }
-    return image;
-  });
 
   return (
     <>
@@ -63,26 +47,32 @@ const Reservations = () => {
           </div>
           <div>
             <p>Select your dream location to enjoy the best holiday ever!</p>
-            <form>
-
-              <select onChange={(e) => setRoomId(e.target.value)}>
-                { destinations.map((destination) => (
-                  <option key={destination.id} value={destination.id}>
-                    {destination.city_name}
-                  </option>
-                ))}
-              </select>
+            <form onSubmit={createReservation}>
               <div className="r-b">
-                <DatePicker className="dp-1" selected={startDate} onChange={(date) => setStartDate(date)} />
+                <DatePicker
+                  className="dp-1"
+                  selected={startDate}
+                  value={startDate}
+                  onChange={(newValue) => {
+                    setStartDate(newValue);
+                    console.log(startDate.toLocaleString())
+                  }}
+                />
+
                 <DropdownButton align="end" title={title} id="down">
-                  <Dropdown.Item eventKey="1" onClick={() => setTitle(location)}>{location}</Dropdown.Item>
+                  {destinations.map((destination) => {
+                    if (destination.id == parseInt(id, 10)) {
+                      return (<Dropdown.Item eventKey="1" onClick={() => setTitle(destination.id)}>{destination.city_name}</Dropdown.Item>);
+                    }
+                    return '';
+                  })}
                 </DropdownButton>
-                <button type="submit" className="btn-1" onClick={createReservation}>Book now</button>
+
+                <button type="submit" className="btn-1">Book now</button>
               </div>
 
             </form>
-            { addNewReservation.payload && addNewReservation.payload.status === 201
-            && <p>Reservation was successful!</p>}
+
           </div>
         </div>
       </div>
