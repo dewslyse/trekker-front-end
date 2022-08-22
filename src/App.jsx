@@ -10,6 +10,8 @@ import Register from './pages/Register';
 import { checkLoginStatus } from './store/actions/userActions';
 import RequireAuth from './components/RequireAuth';
 import { login } from './store/reducers/userReducer';
+// import "~slick-carousel/slick/slick.css";
+// import "~slick-carousel/slick/slick-theme.css";
 
 const App = () => {
   const dispatch = useDispatch();
