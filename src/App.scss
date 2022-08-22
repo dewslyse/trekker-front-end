@@ -1,3 +1,51 @@
+
+$link_background: #96C03F;
+$link_color: #fff;
+$link_i_color: #4A4A4A;
+$sidebar_background: #FEFEFF;
+$border_color: #ececee;
+
+$font-family: "acumin-pro","Acumin Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+
 .body {
   box-sizing: border-box;
 }
+
+.sidebar {
+  background: $sidebar_background;
+  padding: 0.5em;
+  width: 130px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-right: 1px solid $border_color;
+}
+
+.sidebar_content {
+  padding: 0.5em;
+  margin-top: 9rem;
+}
+
+.page_link {
+  margin-left: -5px;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.link {
+  width: 100%;
+  display: block;
+  padding: 0.7em;
+  color: $link_i_color;
+  font-family: $font-family;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  &:hover {
+    background: $link_background;
+    color: $link_color;
+  }
+}
+
