@@ -1,15 +1,11 @@
-// import { Link } from 'react-router-dom';
-
 const Sidebar = () => (
-  <div>
-    <a href="/Destinations"> Destinations </a>
-    <br />
-    <a href="/Destinations"> Destinations </a>
-    <br />
-    <a href="/Destinations"> Destinations </a>
-    <br />
-    <a href="/Destinations"> Destinations </a>
-    <br />
+  <div className="sidebar">
+    <div className="sidebar_content">
+      <h3 className="page_link"><a href="/Destinations" className="link"> DESTINATIONS </a></h3>
+      <h3 className="page_link"><a href="/Destinations" className="link"> DESTINATIONS </a></h3>
+      <h3 className="page_link"><a href="/Destinations" className="link"> DESTINATIONS </a></h3>
+      <h3 className="page_link"><a href="/Destinations" className="link"> DESTINATIONS </a></h3>
+    </div>
   </div>
 );
 
