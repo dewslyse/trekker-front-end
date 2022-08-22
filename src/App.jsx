@@ -7,28 +7,13 @@ import { fetchDestinations } from './store/actions/destinationActions';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import { checkLoginStatus } from './store/actions/userActions';
 import RequireAuth from './components/RequireAuth';
-import { login } from './store/reducers/userReducer';
-// import "~slick-carousel/slick/slick.css";
-// import "~slick-carousel/slick/slick-theme.css";
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchDestinations());
-  }, []);
-
-  useEffect(() => {
-    const loggedIn = localStorage.getItem('LOGGED_IN');
-    if (loggedIn) {
-      dispatch(login());
-    }
-  }, []);
-
-  useEffect(() => {
-    dispatch(checkLoginStatus());
   }, []);
 
   return (

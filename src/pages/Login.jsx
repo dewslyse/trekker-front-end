@@ -33,7 +33,7 @@ const Login = () => {
     dispatch(loginUser(user))
       .unwrap()
       .then(() => {
-        localStorage.setItem('LOGGED_IN', true);
+        localStorage.setItem('LOGGED_IN', user.username);
         setTimeout(() => dispatch(hideNotification()), 2000);
       })
       .catch(() => { setLoading(false); });
