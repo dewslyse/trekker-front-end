@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Outlet, Link, useNavigate } from 'react-router-dom';
 import Notification from '../components/Notification';
+import Sidebar from '../components/Sidebar';
 import { logoutUser } from '../store/actions/userActions';
 import { logout } from '../store/reducers/userReducer';
 
@@ -22,10 +23,10 @@ const Home = () => {
     <>
       {notification && (<Notification message={notification.message} />)}
       <div>
-        Sidebar
         {!isLoggedIn && <Link to="/login">Login</Link>}
         {!isLoggedIn && (<Link to="/register">Register</Link>)}
         {isLoggedIn && (<button type="button" onClick={handleLogout}>Logout</button>)}
+        {isLoggedIn && (<Sidebar />)}
       </div>
       <Outlet />
     </>

@@ -1,7 +1,9 @@
 import React from 'react';
 
 const Destination = () => (
-  <div>Destination</div>
+  <div>
+    <h1>Destination</h1>
+  </div>
 );
 
 export default Destination;
