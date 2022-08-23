@@ -28,7 +28,7 @@ const Reservations = () => {
       // fee: 20.21,
       start_date: '2020-01-01', end_date: '2020-01-01', fee: '100', destination_id: id,
     };
-    dispatch(addReservation((reservation), 1));
+    dispatch(addReservation((reservation), reservation.destination_id));
   };
 
   return (
