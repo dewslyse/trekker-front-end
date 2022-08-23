@@ -1,21 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { addDestination, removeDestination, fetchDestinations } from '../actions/destinationActions';
 
 const destinationSlice = createSlice({
   name: 'destination',
   initialState: [],
-  reducers: {
-    createDestinations: (state, { payload }) => payload,
-
-    addDestination: (state, { payload }) => {
+  extraReducers: {
+    [addDestination.fulfilled]: (state, { payload }) => {
       state.push(payload);
     },
-    removeDestination: (state, { payload }) => {
+    [removeDestination.fulfilled]: (state, { payload }) => {
       state.filter((destination) => destination.id !== payload);
     },
+    [fetchDestinations.fulfilled]: (state, { payload }) => payload,
   },
 });
 
-const { actions, reducer } = destinationSlice;
+const { reducer } = destinationSlice;
 
-export const { createDestinations, addDestination, removeDestination } = actions;
 export default reducer;

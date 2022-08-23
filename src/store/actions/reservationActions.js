@@ -1,56 +1,46 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import api from '../../api/apiRequests';
-import { createReservations, addReservation, removeReservation } from '../reducers/reservationReducer';
-import { hideNotification, showNotification } from '../reducers/uiReducers';
+import { showNotification } from '../reducers/uiReducers';
 
-const fetchReservations = () => async (dispatch) => {
-  try {
-    const response = await api.get('/destinations/:id/reservations');
-    dispatch(createReservations(response.data));
-    dispatch(hideNotification());
-  } catch (error) {
-    dispatch(showNotification({
-      status: 'error',
-      title: 'Error!',
-      message: error.message,
-    }));
-    setInterval(() => {
-      dispatch(hideNotification());
-    }, 3000);
-  }
-};
+const fetchReservations = createAsyncThunk(
+  'reservation/fetch',
+  async (thunkAPI) => {
+    try {
+      const response = await api.get('/destinations/:id/reservations', { withCredentials: true });
+      return response.data;
+    } catch (error) {
+      thunkAPI.dispatch(showNotification({ message: error.message, isError: true }));
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  },
+);
 
-const addNewReservation = (reservation, id) => async (dispatch) => {
-  try {
-    const response = await api.post(`/destinations/${id}/reservations`, reservation);
-    dispatch(addReservation(response.data));
-    dispatch(hideNotification());
-  } catch (error) {
-    dispatch(showNotification({
-      status: 'error',
-      title: 'Error!',
-      message: error.message,
-    }));
-    setInterval(() => {
-      dispatch(hideNotification());
-    }, 3000);
-  }
-};
+const addReservation = createAsyncThunk(
+  'reservation/add',
+  async (reservation, id, thunkAPI) => {
+    try {
+      const response = await api.post(`/destinations/${id}/reservations`, reservation, { withCredentials: true });
+      thunkAPI.dispatch(showNotification({ message: 'Reservation added successfully', isError: false }));
+      return response.data;
+    } catch (error) {
+      thunkAPI.dispatch(showNotification({ message: error.message, isError: true }));
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  },
+);
 
-const deleteReservation = (id) => async (dispatch) => {
-  try {
-    await api.delete(`destinations/:id/reservations/${id}`, { withCredentials: true });
-    dispatch(removeReservation(id));
-    dispatch(hideNotification());
-  } catch (error) {
-    dispatch(showNotification({
-      status: 'error',
-      title: 'Error!',
-      message: error.message,
-    }));
-    setInterval(() => {
-      dispatch(hideNotification());
-    }, 3000);
-  }
-};
+const removeReservation = createAsyncThunk(
+  'reservation/remove',
+  async (id, thunkAPI) => {
+    try {
+      await api.delete(`/destinations/:id/reservations/${id}`, { withCredentials: true });
+      thunkAPI.dispatch(showNotification({ message: 'Reservation removed successfully', isError: false }));
+      return id;
+    } catch (error) {
+      thunkAPI.dispatch(showNotification({ message: error.message, isError: true }));
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  },
+);
 
-export { fetchReservations, addNewReservation, deleteReservation };
+export { fetchReservations, addReservation, removeReservation };

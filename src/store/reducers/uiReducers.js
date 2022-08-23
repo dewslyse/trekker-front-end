@@ -1,22 +1,23 @@
+/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
+
+const initialState = {
+  notification: {
+    message: '',
+    isError: false,
+  },
+};
 
 const uiSlice = createSlice({
   name: 'ui',
-  initialState: { visiblity: false, notification: null },
+  initialState,
   reducers: {
-    showNotification: (state, { payload }) => (
-      {
-        visiblity: state.visibility,
-        notification: {
-          status: payload.status,
-          title: payload.title,
-          message: payload.message,
-        },
-      }
-    ),
-    hideNotification: (state) => (
-      { visiblity: state.visibility, notification: null }
-    ),
+    showNotification: (state, { payload }) => {
+      state.notification = payload;
+    },
+    hideNotification: (state) => {
+      state.notification = initialState.notification;
+    },
   },
 });
 

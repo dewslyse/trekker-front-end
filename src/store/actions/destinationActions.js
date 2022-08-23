@@ -1,56 +1,46 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import api from '../../api/apiRequests';
-import { addDestination, createDestinations, removeDestination } from '../reducers/destinationReducer';
-import { hideNotification, showNotification } from '../reducers/uiReducers';
+import { showNotification } from '../reducers/uiReducers';
 
-const fetchDestinations = () => async (dispatch) => {
-  try {
-    const response = await api.get('/destinations');
-    dispatch(createDestinations(response.data));
-    dispatch(hideNotification());
-  } catch (error) {
-    dispatch(showNotification({
-      status: 'error',
-      title: 'Error!',
-      message: error.message,
-    }));
-    setInterval(() => {
-      dispatch(hideNotification());
-    }, 3000);
-  }
-};
+const addDestination = createAsyncThunk(
+  'destination/add',
+  async (destination, thunkAPI) => {
+    try {
+      const response = await api.post('/destinations', destination, { withCredentials: true });
+      thunkAPI.dispatch(showNotification({ message: 'Destination added successfully', isError: false }));
+      return response.data;
+    } catch (error) {
+      thunkAPI.dispatch(showNotification({ message: error.message, isError: true }));
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  },
+);
 
-const addNewDestination = (destination) => async (dispatch) => {
-  try {
-    const response = await api.post('/destinations', destination, { withCredentials: true });
-    dispatch(addDestination(response.data));
-    dispatch(hideNotification());
-  } catch (error) {
-    dispatch(showNotification({
-      status: 'error',
-      title: 'Error!',
-      message: error.message,
-    }));
-    setInterval(() => {
-      dispatch(hideNotification());
-    }, 3000);
-  }
-};
+const removeDestination = createAsyncThunk(
+  'destination/remove',
+  async (id, thunkAPI) => {
+    try {
+      await api.delete(`/destinations/${id}`, { withCredentials: true });
+      thunkAPI.dispatch(showNotification({ message: 'Destination removed successfully', isError: false }));
+      return id;
+    } catch (error) {
+      thunkAPI.dispatch(showNotification({ message: error.message, isError: true }));
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  },
+);
 
-const deleteDestination = (id) => async (dispatch) => {
-  try {
-    await api.delete(`/destinations/${id}`, { withCredentials: true });
-    dispatch(removeDestination(id));
-    dispatch(hideNotification());
-  } catch (error) {
-    dispatch(showNotification({
-      status: 'error',
-      title: 'Error!',
-      message: error.message,
-    }));
-    setInterval(() => {
-      dispatch(hideNotification());
-    }, 3000);
-  }
-};
+const fetchDestinations = createAsyncThunk(
+  'destination/fetch',
+  async (thunkAPI) => {
+    try {
+      const response = await api.get('destinations', { withCredentials: true });
+      return response.data;
+    } catch (error) {
+      thunkAPI.dispatch(showNotification({ message: error.message, isError: true }));
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  },
+);
 
-export { fetchDestinations, addNewDestination, deleteDestination };
+export { fetchDestinations, addDestination, removeDestination };

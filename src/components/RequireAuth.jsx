@@ -1,14 +1,31 @@
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useLocation, Navigate, Outlet } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-
-import React from 'react';
+import { checkLoginStatus } from '../store/actions/userActions';
+import { hideNotification, showNotification } from '../store/reducers/uiReducers';
+import { login } from '../store/reducers/userReducer';
 
 const RequireAuth = () => {
-  let isLoggedIn = useSelector((state) => state.user.isLoggedIn);
-  isLoggedIn = true;
+  const isLoggedIn = localStorage.getItem('LOGGED_IN');
   const location = useLocation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const loggedIn = localStorage.getItem('LOGGED_IN');
+    if (loggedIn) dispatch(login());
+  }, []);
+
+  useEffect(() => {
+    dispatch(checkLoginStatus());
+  }, []);
+
+  if (!isLoggedIn) {
+    dispatch(showNotification({ message: 'Please sign in first', isError: true }));
+    setTimeout(() => dispatch(hideNotification()), 2000);
+  }
+
   return (
-    isLoggedIn ? <Outlet /> : <Navigate to="/" state={{ from: location }} replace />
+    isLoggedIn ? <Outlet /> : <Navigate to="/login" state={{ from: location }} replace />
   );
 };
 
