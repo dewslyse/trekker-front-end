@@ -17,7 +17,7 @@ $button_family: "CerebriSans-Regular","-apple-system","system-ui","Roboto",sans-
 .sidebar {
   background: $sidebar_background;
   padding: 0.5em;
-  width: 130px;
+  width: 13%;
   height: 100%;
   position: fixed;
   top: 0;
@@ -55,8 +55,7 @@ $button_family: "CerebriSans-Regular","-apple-system","system-ui","Roboto",sans-
 
   .logo {
     height: 90px;
-    width: 138px;
-    border-right: 1px solid $border_color;
+    width: 137px;
   }
 }
 
@@ -76,22 +75,42 @@ $button_family: "CerebriSans-Regular","-apple-system","system-ui","Roboto",sans-
   transform: scale(1.05);
 }
 
+.logout {
+  color: $button_color;
+  text-decoration: none;
+  transition: all .3s ease-in-out;
+  cursor: pointer;
+}
+
+.logout:hover {
+  -moz-transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  -o-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+// links
 .page_link {
-  margin-left: -5px;
   width: 100%;
+}
+
+li {
+  list-style-type: none;
+  text-decoration: none;
+  margin-top: 1em;
 }
 
 .link {
   width: 100%;
-  display: flex;
-  color: $link_i_color;
-  font-family: $font-family;
-  font-size: 14px;
-  font-weight: bold;
+  display: block;
   text-decoration: none;
-  &:hover {
-    background: $link_background;
-    color: $link_color;
-  }
+  color: $link_i_color;
+  font-weight: bold;
+  font-family: $font-family;
+  padding: 0.5em;
 }
 
+.active {
+  background-color: $link_background;
+  color: $link_color;
+}

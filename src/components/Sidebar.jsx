@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, NavLink } from 'react-router-dom';
 import { logoutUser } from '../store/actions/userActions';
 import { logout } from '../store/reducers/userReducer';
 import trekkerlogo from '../images/trekkerlogo.png';
@@ -21,20 +21,54 @@ const Sidebar = () => {
     <div className="sidebar">
       <img src={trekkerlogo} alt="logo" className="logo" />
 
-      <div className="sidebar_content">
-        <h5 className="page_link"><a href="/Destinations" className="link"> DESTINATIONS </a></h5>
-        <h5 className="page_link"><a href="/Destinations" className="link"> RESERVE </a></h5>
-        <h5 className="page_link"><a href="/Destinations" className="link"> MY RESERVATIONS </a></h5>
-        <h5 className="page_link"><a href="/Destinations" className="link"> ADD DESTINATION </a></h5>
-        <h5 className="page_link"><a href="/Destinations" className="link"> DEL_DESTINATION</a></h5>
-      </div>
+      <ul className="sidebar_content">
+        <div className="page_link">
+          <NavLink
+            to="/Destinations"
+            className="link"
+            activeClassName="active-link"
+          >
+            DESTINATIONS
+          </NavLink>
+        </div>
+
+        <li className="page_link">
+          <NavLink
+            to="/Destinations"
+            className="link"
+            activeClassName="active-link"
+          >
+            RESERVE
+          </NavLink>
+        </li>
+
+        <li className="page_link">
+          <NavLink
+            to="/Destinations"
+            className="link"
+            activeClassName="active-link"
+          >
+            ADD SAFARI
+          </NavLink>
+        </li>
+
+        <li className="page_link">
+          <NavLink
+            to="/Destinations"
+            className="link"
+            activeClassName="active-link"
+          >
+            DELETE SAFARI
+          </NavLink>
+        </li>
+      </ul>
 
       <div className="links">
         {!isLoggedIn && (<button type="button" className="li"><Link to="/login" className="enter">Login</Link></button>)}
         <br />
         {!isLoggedIn && (<button type="button" className="li"><Link to="/register" className="enter">Register</Link></button>)}
         <br />
-        {isLoggedIn && (<button type="button" className="enter" onClick={handleLogout}>Logout</button>)}
+        {isLoggedIn && (<button type="button" className="logout" style={{ marginBottom: 20 }} onClick={handleLogout}>Logout</button>)}
       </div>
     </div>
   );
