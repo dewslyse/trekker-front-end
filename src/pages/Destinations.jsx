@@ -9,9 +9,9 @@ const Destinations = () => {
       <Carousel>
         {destinations.map((destination) => (
           <div key={destination.id}>
+            <img className="dimage" src={destination.image_url} alt={destination.name} />
             <h2 className="dname">{destination.name}</h2>
             <p className="dabout">{destination.description}</p>
-            <img src={destination.image_url} alt={destination.name} />
           </div>
         ))}
       </Carousel>

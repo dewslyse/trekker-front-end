@@ -1,11 +1,14 @@
-
+// SIDEBAR
 $link_background: #96C03F;
 $link_color: #fff;
 $link_i_color: #4A4A4A;
 $sidebar_background: #FEFEFF;
 $border_color: #ececee;
+$button_background: #c2fbd7;
+$button_color: #008000;
 
 $font-family: "acumin-pro","Acumin Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+$button_family: "CerebriSans-Regular","-apple-system","system-ui","Roboto",sans-serif;
 
 .body {
   box-sizing: border-box;
@@ -20,27 +23,70 @@ $font-family: "acumin-pro","Acumin Pro","Helvetica Neue",Helvetica,Arial,sans-se
   top: 0;
   left: 0;
   border-right: 1px solid $border_color;
+  display: flex;
+  flex-direction: column;
+
+  button {
+    background: $button_background;
+    color: $button_color;
+    font-family: $button_family;
+    font-weight: 367;
+    display: inline-block;
+    padding: 7px 20px;
+    text-decoration: none;
+    border-radius: 100px;
+    border: 0;
+    font-size: 14px;
+    box-shadow: rgb(44 187 99 / 20%) 0 -25px 18px -14px inset, rgb(44 187 99 / 15%) 0 1px 2px, rgb(44 187 99 / 15%) 0 2px 4px, rgb(44 187 99 / 15%) 0 4px 8px, rgb(44 187 99 / 15%) 0 8px 16px, rgb(44 187 99 / 15%) 0 16px 32px;
+    touch-action: manipulation;
+
+    .enter {
+      transition: all 100ms ease;
+      color: $button_color;
+      text-decoration: none;
+    }
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+  }
+
+  .logo {
+    height: 90px;
+    width: 138px;
+    border-right: 1px solid $border_color;
+  }
 }
 
 .sidebar_content {
   padding: 0.5em;
-  margin-top: 9rem;
+  margin-top: 6rem;
+}
+
+.li {
+  transition: all .3s ease-in-out;
+}
+
+.li:hover {
+  -moz-transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  -o-transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .page_link {
   margin-left: -5px;
-  margin-top: 0;
-  margin-bottom: 0;
   width: 100%;
 }
 
 .link {
   width: 100%;
-  display: block;
-  padding: 0.7em;
+  display: flex;
   color: $link_i_color;
   font-family: $font-family;
-  font-size: 1rem;
+  font-size: 14px;
   font-weight: bold;
   text-decoration: none;
   &:hover {
