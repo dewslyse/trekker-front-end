@@ -11,7 +11,7 @@ const Reservations = () => {
   const destinations = useSelector((state) => state.destinations);
   const [startDate, setStartDate] = useState(Date.now);
   const [endDate, setEndDate] = useState(Date.now);
-  const [data, setData] = useState({ id: '', title: '' });
+  const [data, setData] = useState({ id: 1, title: 'Serengeti' });
 
   const { id, title } = data;
   const dispatch = useDispatch();
@@ -22,9 +22,9 @@ const Reservations = () => {
   const createReservation = (e) => {
     e.preventDefault();
     const reservation = {
-      start_date: startDate, end_date: endDate,
+      start_date: '2022-08-23', end_date: '2022-08-24', id,
     };
-    dispatch(addReservation((reservation), id));
+    dispatch(addReservation(reservation));
   };
 
   const handledropdownChange = (id, title) => {

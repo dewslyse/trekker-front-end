@@ -17,9 +17,10 @@ const fetchReservations = createAsyncThunk(
 
 const addReservation = createAsyncThunk(
   'reservation/add',
-  async (reservation, id, thunkAPI) => {
+  async ({ id, start_date, end_date }, thunkAPI) => {
+    const data = { start_date, end_date, id };
     try {
-      const response = await api.post(`/destinations/${id}/reservations`, reservation, { withCredentials: true });
+      const response = await api.post(`/destinations/${id}/reservations`, data, { withCredentials: true });
       thunkAPI.dispatch(showNotification({ message: 'Reservation added successfully', isError: false }));
       return response.data;
     } catch (error) {
