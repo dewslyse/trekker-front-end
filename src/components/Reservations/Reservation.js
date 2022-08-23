@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import { useSelector, useDispatch } from 'react-redux';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import { useParams } from 'react-router-dom';
 import { addReservation } from '../../store/actions/reservationActions';
+import { fetchDestinations } from '../../store/actions/destinationActions';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const Reservations = () => {
@@ -13,17 +14,21 @@ const Reservations = () => {
   const destinations = useSelector((state) => state.destinations);
 
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchDestinations());
+  }, []);
 
   const { id } = useParams();
   const createReservation = (e) => {
     e.preventDefault();
     const reservation = {
-      destination_id: title,
-      start_date: startDate.toLocaleDateString(),
-      end_date: startDate.toLocaleDateString(),
-      fee: 20.21,
+      // destination_id: id,
+      // start_date: startDate.toLocaleDateString(),
+      // end_date: '8/29/2022',
+      // fee: 20.21,
+      start_date: '2020-01-01', end_date: '2020-01-01', fee: '100', destination_id: id,
     };
-    dispatch(addReservation(JSON.stringify(reservation), reservation.destination_id));
+    dispatch(addReservation((reservation), 1));
   };
 
   return (
@@ -46,7 +51,7 @@ const Reservations = () => {
           </div>
           <div>
             <p>Select your dream location to enjoy the best holiday ever!</p>
-            <form onSubmit={createReservation}>
+            <form onSubmit={createReservation} method="">
               <div className="r-b">
                 <DatePicker
                   className="dp-1"
@@ -54,14 +59,13 @@ const Reservations = () => {
                   value={startDate}
                   onChange={(newValue) => {
                     setStartDate(newValue);
-                    console.log(startDate.toLocaleString());
                   }}
                 />
 
                 <DropdownButton align="end" title={title} id="down">
                   {destinations.map((destination) => {
-                    if (destination.id === parseInt(id, 10)) {
-                      return (<Dropdown.Item eventKey="1" onClick={() => setTitle(destination.id)}>{destination.city_name}</Dropdown.Item>);
+                    if (destination.id === id) {
+                      return (<Dropdown.Item eventKey="1" onClick={() => setTitle(destination.city_name)}>{destination.city_name}</Dropdown.Item>);
                     }
                     return '';
                   })}
