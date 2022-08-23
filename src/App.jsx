@@ -8,7 +8,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import RequireAuth from './components/RequireAuth';
-import Reservations from './components/Reservations/Reservation';
+import Reservations from './components/Reservation';
 
 const App = () => {
   const dispatch = useDispatch();

@@ -3,8 +3,8 @@ import DatePicker from 'react-datepicker';
 import { useSelector, useDispatch } from 'react-redux';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import { addReservation } from '../../store/actions/reservationActions';
-import { fetchDestinations } from '../../store/actions/destinationActions';
+import { addReservation } from '../store/actions/reservationActions';
+import { fetchDestinations } from '../store/actions/destinationActions';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const Reservations = () => {
@@ -22,7 +22,7 @@ const Reservations = () => {
   const createReservation = (e) => {
     e.preventDefault();
     const reservation = {
-      start_date: '2022-08-23', end_date: '2022-08-24', id,
+      start_date: startDate, end_date: endDate, id,
     };
     dispatch(addReservation(reservation));
   };
@@ -60,6 +60,7 @@ const Reservations = () => {
                   onChange={(newValue) => {
                     setStartDate(newValue);
                   }}
+                  dateFormat="yyyy-MM-dd"
                 />
 
                 <DatePicker
@@ -69,6 +70,7 @@ const Reservations = () => {
                   onChange={(newValue) => {
                     setEndDate(newValue);
                   }}
+                  dateFormat="yyyy-MM-dd"
                 />
 
                 <DropdownButton align="end" id="down" title={title}>
