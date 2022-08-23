@@ -4,8 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import { useParams } from 'react-router-dom';
-import { addNewReservation } from '../../store/actions/reservationActions';
-
+import { addReservation } from '../../store/actions/reservationActions';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const Reservations = () => {
@@ -24,7 +23,7 @@ const Reservations = () => {
       end_date: startDate.toLocaleDateString(),
       fee: 20.21,
     };
-    dispatch(addNewReservation(JSON.stringify(reservation), reservation.destination_id));
+    dispatch(addReservation(JSON.stringify(reservation), reservation.destination_id));
   };
 
   return (
