@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import { removeReservation, fetchReservations} from '../store/actions/reservationActions';
 import { fetchDestinations } from '../store/actions/destinationActions';
 
+
 const Reservation = () => {
   const reservations = useSelector((state) => state.reservations);
   const dispatch = useDispatch();
@@ -13,16 +14,15 @@ const Reservation = () => {
   }, []);
   useEffect(() => {
     dispatch(fetchReservations());
-  }, []);
+  }, [reservations]);
   const destinations = useSelector((state) => state.destinations);
  
    const deleteRes = (e, id) => {
     e.preventDefault(); 
-    dispatch(removeReservation(id))
-    useEffect(()=> {
-      dis
-    })
+    dispatch(removeReservation(id));
    }
+
+ 
   return (
     <>
 
