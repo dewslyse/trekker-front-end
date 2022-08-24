@@ -6,6 +6,6 @@ export default styled.div`
   justify-content: center;
   align-items: center;
   height: 250px;
-  width: 100%;
-  margin: 0 15px;
+  width: 250px;
+  margin: 1% 5% 0 5%;
 `;
