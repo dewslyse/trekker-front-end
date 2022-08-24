@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -29,8 +28,9 @@ const App = () => {
           {/* Protected routes */}
           <Route element={<RequireAuth />}>
             <Route path="destinations/:id" element={<div>Destination</div>} />
-            <Route path="destinations/:id/reservations" element={<Reservations />} />
-            <Route path="/*" element={<Reservations />} />
+            <Route path="reservations" element={<Reservations />} />
+            <Route path="reservations/delete" element={<Reservations />} />
+            <Route path="/*" element={<Destinations />} />
           </Route>
         </Route>
       </Routes>
