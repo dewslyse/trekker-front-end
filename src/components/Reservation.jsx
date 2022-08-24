@@ -3,32 +3,32 @@ import DatePicker from 'react-datepicker';
 import { useSelector, useDispatch } from 'react-redux';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import { useParams } from 'react-router-dom';
-import { addReservation } from '../../store/actions/reservationActions';
-import { fetchDestinations } from '../../store/actions/destinationActions';
+import { addReservation } from '../store/actions/reservationActions';
+import { fetchDestinations } from '../store/actions/destinationActions';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const Reservations = () => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [title, setTitle] = useState();
   const destinations = useSelector((state) => state.destinations);
+  const [startDate, setStartDate] = useState(Date.now);
+  const [endDate, setEndDate] = useState(Date.now);
+  const [data, setData] = useState({ id: 1, title: 'Serengeti' });
 
+  const { id, title } = data;
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchDestinations());
   }, []);
 
-  const { id } = useParams();
   const createReservation = (e) => {
     e.preventDefault();
     const reservation = {
-      destination_id: id,
-      start_date: startDate.toLocaleDateString(),
-      end_date: '8/29/2022',
-      fee: 20.21,
-      // start_date: '2020-01-01', end_date: '2020-01-01', fee: '100', destination_id: id,
+      start_date: startDate, end_date: endDate, id,
     };
-    dispatch(addReservation((reservation), reservation.destination_id));
+    dispatch(addReservation(reservation));
+  };
+
+  const handledropdownChange = (id, title) => {
+    setData({ id, title });
   };
 
   return (
@@ -51,7 +51,7 @@ const Reservations = () => {
           </div>
           <div>
             <p>Select your dream location to enjoy the best holiday ever!</p>
-            <form onSubmit={createReservation} method="">
+            <form onSubmit={createReservation} method="post">
               <div className="r-b">
                 <DatePicker
                   className="dp-1"
@@ -60,15 +60,23 @@ const Reservations = () => {
                   onChange={(newValue) => {
                     setStartDate(newValue);
                   }}
+                  dateFormat="yyyy-MM-dd"
                 />
 
-                <DropdownButton align="end" title={title} id="down">
-                  {destinations.map((destination) => {
-                    if (destination.id === 1) {
-                      return (<Dropdown.Item eventKey="1" onClick={() => setTitle(destination.city_name)}>{destination.city_name}</Dropdown.Item>);
-                    }
-                    return '';
-                  })}
+                <DatePicker
+                  className="dp-1"
+                  selected={endDate}
+                  value={endDate}
+                  onChange={(newValue) => {
+                    setEndDate(newValue);
+                  }}
+                  dateFormat="yyyy-MM-dd"
+                />
+
+                <DropdownButton align="end" id="down" title={title}>
+                  { destinations.map((destination) => (
+                    <Dropdown.Item key={destination.id} eventKey="1" onClick={() => handledropdownChange(destination.id, destination.city_name)} selected={destination.city_name}>{destination.city_name}</Dropdown.Item>
+                  ))}
                 </DropdownButton>
 
                 <button type="submit" className="btn-1">Book now</button>
