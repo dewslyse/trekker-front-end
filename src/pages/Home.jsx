@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
-// import Sidebar from '../components/Sidebar';
+import Sidebar from '../components/Sidebar';
 import Notification from '../components/Notification';
 import HomeCarousel from '../components/HomeCarousel';
 
@@ -10,7 +10,7 @@ const Home = () => {
 
   return (
     <>
-      {/* <Sidebar /> */}
+      <Sidebar />
       {notification && (<Notification message={notification.message} />)}
       <HomeCarousel />
       <Outlet />

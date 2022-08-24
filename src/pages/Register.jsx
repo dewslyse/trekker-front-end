@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { registerUser } from '../store/actions/userActions';
 import { hideNotification } from '../store/reducers/uiReducers';
+import styles from './Login.module.scss';
 
 const Register = () => {
   const userRef = useRef();
@@ -19,6 +20,10 @@ const Register = () => {
     password: '',
     password_confirmation: '',
   });
+
+  const {
+    loginContainer, loginForm,
+  } = styles;
 
   useEffect(() => {
     userRef.current.focus();
@@ -87,64 +92,71 @@ const Register = () => {
   return (
     <>
       {isLoggedIn && (<Navigate to="/destinations" replace />)}
-      <section>
-        <h1>Register</h1>
-        <form onSubmit={handleSubmit} method="">
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            ref={userRef}
-            onChange={onInputChange}
-            value={user.username}
-            name="username"
-            required
-          />
-          {errors.username && <p className="error">{errors.username}</p>}
-          <label htmlFor="full_name">Full Name</label>
-          <input
-            type="text"
-            id="full_name"
-            ref={userRef}
-            onChange={onInputChange}
-            value={user.full_name}
-            name="full_name"
-            required
-          />
-          {errors.full_name && <p className="error">{errors.full_name}</p>}
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            ref={userRef}
-            onChange={onInputChange}
-            value={user.email}
-            name="email"
-            required
-          />
-          {errors.email && <p className="error">{errors.email}</p>}
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            onChange={onInputChange}
-            value={user.password}
-            name="password"
-            required
-          />
-          {errors.password && <p className="error">{errors.password}</p>}
-          <label htmlFor="password_confirmation">Password confirmation</label>
-          <input
-            type="password"
-            id="password_confirmation"
-            onChange={onInputChange}
-            value={user.password_confirmation}
-            name="password_confirmation"
-            required
-          />
-          {errors.password_confirmation && <p className="error">{errors.password_confirmation}</p>}
-          <button type="submit">Register</button>
-        </form>
+      <section className={loginContainer}>
+        {/* <h1>Register</h1> */}
+        <div className={loginForm}>
+          <form onSubmit={handleSubmit} method="">
+            <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              ref={userRef}
+              onChange={onInputChange}
+              value={user.username}
+              name="username"
+              required
+            />
+            {errors.username && <p className="error">{errors.username}</p>}
+
+            <label htmlFor="full_name">Full name</label>
+            <input
+              type="text"
+              id="full_name"
+              ref={userRef}
+              onChange={onInputChange}
+              value={user.full_name}
+              name="full_name"
+              required
+            />
+            {errors.full_name && <p className="error">{errors.full_name}</p>}
+
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              ref={userRef}
+              onChange={onInputChange}
+              value={user.email}
+              name="email"
+              required
+            />
+            {errors.email && <p className="error">{errors.email}</p>}
+
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              onChange={onInputChange}
+              value={user.password}
+              name="password"
+              required
+            />
+            {errors.password && <p className="error">{errors.password}</p>}
+
+            <label htmlFor="password_confirmation">Password confirmation</label>
+            <input
+              type="password"
+              id="password_confirmation"
+              onChange={onInputChange}
+              value={user.password_confirmation}
+              name="password_confirmation"
+              required
+            />
+            {errors.password_confirmation && <p className="error">{errors.password_confirmation}</p>}
+
+            <button type="submit">Register</button>
+          </form>
+        </div>
       </section>
       {loading && <p>Loading...</p>}
     </>

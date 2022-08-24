@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { loginUser } from '../store/actions/userActions';
 import { hideNotification } from '../store/reducers/uiReducers';
+import styles from './Login.module.scss';
 
 const Login = () => {
   const userRef = useRef();
@@ -15,6 +16,10 @@ const Login = () => {
     username: '',
     password: '',
   });
+
+  const {
+    loginContainer, loginForm,
+  } = styles;
 
   useEffect(() => {
     userRef.current.focus();
@@ -46,30 +51,32 @@ const Login = () => {
   return (
     <>
       {isLoggedIn && (<Navigate to="/destinations" replace />)}
-      <section>
-        <h1>Sign In</h1>
-        <form onSubmit={handleSubmit} method="">
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            ref={userRef}
-            onChange={onInputChange}
-            value={user.username}
-            name="username"
-            required
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            onChange={onInputChange}
-            value={user.password}
-            name="password"
-            required
-          />
-          <button type="submit">Sign In</button>
-        </form>
+      <section className={loginContainer}>
+        <div className={loginForm}>
+          {/* <h2>Sign In</h2> */}
+          <form onSubmit={handleSubmit} method="">
+            <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              ref={userRef}
+              onChange={onInputChange}
+              value={user.username}
+              name="username"
+              required
+            />
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              onChange={onInputChange}
+              value={user.password}
+              name="password"
+              required
+            />
+            <button type="submit">Sign In</button>
+          </form>
+        </div>
       </section>
       {loading && <p>Loading...</p>}
     </>

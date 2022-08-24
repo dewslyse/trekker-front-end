@@ -8,7 +8,7 @@
 
 .carouselInner {
   white-space: nowrap;
-  overflow-x: scroll;}
+}
 
 .slide {
   width: 100%;
@@ -76,15 +76,15 @@
 }
 
 .dot {
-  width: 2rem;
-  height: 2rem;
+  width: 1.25rem;
+  height: 1.25rem;
   border-radius: 50%;
   background-color: #fff;
   border: 2px solid #e8e8e8;
   margin: 0.5rem;
   cursor: pointer;
-  
+
   &.active {
     background-color: #97bf02;
-  }   
+  }
 }
