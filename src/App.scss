@@ -123,8 +123,8 @@ li {
 // Carousel
 
 .destinations_container {
-  width: 80%;
-  height: 100%;
+  width: 80vw;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -135,14 +135,13 @@ li {
 
 .carousel {
   width: 95%;
-  height: 60rem;
+  height: 80rem;
   vertical-align: middle;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   margin-right: 0;
-  margin-top: -20rem;
-  margin-bottom: auto;
+  // margin-bottom: auto;
   
 }
 
@@ -155,7 +154,7 @@ li {
   font-size: 2em;
   word-spacing: 5px;
   color: #101111;
-  margin-top: 5rem;
+  margin-top: 4rem;
 }
 
 .sub {
@@ -219,7 +218,7 @@ li {
 }
 
 .dabout {
-  margin: 0 2rem 0.2rem 0.2rem;
+  margin: 0;
 }
 
 .btn {
@@ -236,32 +235,24 @@ li {
 }
 
 .react-multiple-carousel__arrow {
-  width: 1.5rem;
-  height: 1.5rem;
-  border-radius: 50%;
-  background-color: #fff;
-  border: 1px solid #fff;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
-  outline: none;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1;
+  margin-left: -3rem;
+  margin-right: -3rem;
+  width: 4rem;
+  height: 3rem;
+  font-size: 0.5rem;
   display: flex;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
   color: #fff;
-  font-size: 1.5rem;
-  font-weight: bold;
-  font-family: $font-family;
-  padding: 0.5rem;
-  border-radius: 100%;
-  background-color: #101111;
-  border: 0;
-  font-size: 14px;
-  box-shadow: rgb(44 187 99 / 20%) 0 -25px 18px -14px inset, rgb(44 187 99 / 15%) 0 1px 2px, rgb(44 187 99 / 15%) 0 2px 4px, rgb(44 187 99 / 15%) 0 4px 8px, rgb(44 187 99 / 15%) 0 8px 16px, rgb(44 187 99 / 15%) 0 16px 32px;
-  touch-action: manipulation;
-  cursor: pointer;
+  background: $link_background!important;
+  padding-left: 3rem;
 }
+
+.react-multiple-carousel__arrow--left {
+  border-radius: 0 4rem 4rem 0 !important;
+}
+
+
+// .react-multiple-carousel__arrow--right {
+//   border-radius: 0 4rem 4rem 0 !important;
+// }
