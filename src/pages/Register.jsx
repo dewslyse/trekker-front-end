@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { registerUser } from '../store/actions/userActions';
 import { hideNotification } from '../store/reducers/uiReducers';
+import trekker from '../trekker.png';
 import styles from './Login.module.scss';
 
 const Register = () => {
@@ -95,6 +96,7 @@ const Register = () => {
       <section className={loginContainer}>
         {/* <h1>Register</h1> */}
         <div className={loginForm}>
+          <img src={trekker} alt="trekker logo" />
           <form onSubmit={handleSubmit} method="">
             <label htmlFor="username">Username</label>
             <input
@@ -112,7 +114,6 @@ const Register = () => {
             <input
               type="text"
               id="full_name"
-              ref={userRef}
               onChange={onInputChange}
               value={user.full_name}
               name="full_name"
@@ -124,7 +125,6 @@ const Register = () => {
             <input
               type="email"
               id="email"
-              ref={userRef}
               onChange={onInputChange}
               value={user.email}
               name="email"
@@ -155,6 +155,7 @@ const Register = () => {
             {errors.password_confirmation && <p className="error">{errors.password_confirmation}</p>}
 
             <button type="submit">Register</button>
+            <Link to="/login">Already have an account? Login</Link>
           </form>
         </div>
       </section>

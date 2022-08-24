@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { loginUser } from '../store/actions/userActions';
 import { hideNotification } from '../store/reducers/uiReducers';
+import trekker from '../trekker.png';
 import styles from './Login.module.scss';
 
 const Login = () => {
@@ -53,7 +54,7 @@ const Login = () => {
       {isLoggedIn && (<Navigate to="/destinations" replace />)}
       <section className={loginContainer}>
         <div className={loginForm}>
-          {/* <h2>Sign In</h2> */}
+          <img src={trekker} alt="trekker logo" />
           <form onSubmit={handleSubmit} method="">
             <label htmlFor="username">Username</label>
             <input
@@ -75,6 +76,7 @@ const Login = () => {
               required
             />
             <button type="submit">Sign In</button>
+            <Link to="/register">Register</Link>
           </form>
         </div>
       </section>
