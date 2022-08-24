@@ -6,7 +6,7 @@ const fetchReservations = createAsyncThunk(
   'reservation/fetch',
   async (thunkAPI) => {
     try {
-      const response = await api.get('/destinations/:id/reservations', { withCredentials: true });
+      const response = await api.get('/reservations', { withCredentials: true });
       return response.data;
     } catch (error) {
       thunkAPI.dispatch(showNotification({ message: error.message, isError: true }));
