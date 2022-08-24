@@ -4,13 +4,6 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Item from './Item';
 
-// const responsive = [
-//   { width: 1, itemsToShow: 1 },
-//   { width: 550, itemsToShow: 2 },
-//   { width: 768, itemsToShow: 3 },
-//   { width: 1200, itemsToShow: 4 },
-// ];
-
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
