@@ -22,8 +22,7 @@ const Reservations = () => {
   const createReservation = (e) => {
     e.preventDefault();
     const reservation = {
-     start_date: startDate, end_date: endDate, id,
-
+      startDate, endDate, id,
     };
     dispatch(addReservation(reservation));
   };
@@ -61,7 +60,7 @@ const Reservations = () => {
                   onChange={(newValue) => {
                     setStartDate(newValue);
                   }}
-                  dateFormat = "yyyy-MM-dd"
+                 
                 />
 
                 <DatePicker
