@@ -67,7 +67,6 @@ const Reservations = () => {
                   className="dp-1"
                   selected={endDate}
                   value={endDate}
-                
                   onChange={(newValue) => {
                     setEndDate(newValue);
                   }}

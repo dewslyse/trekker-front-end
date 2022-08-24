@@ -1,6 +1,9 @@
 .body {
   box-sizing: border-box;
 }
+.r-d {
+  margin: auto;
+}
 
 .r-c {
   height: 100vh;
@@ -12,7 +15,6 @@
   .r-h {
     border-bottom: 1.5px solid #c4dd78;
     margin-bottom: 2rem;
-    padding-bottom: 2rem;
     width: 100%;
     text-align: center;
   }
@@ -35,25 +37,26 @@
     margin: 2rem 0;
     display: flex;
     width: 100%;
-    justify-content: space-around;
+    gap: 10px;
+    padding-top: 40px;
   }
 
   .react-datepicker-wrapper,
   #down,
   .btn-1 {
-    width: 200px;
-    height: 60px;
+    width: 150px;
+    gap: 20px;
+    height: 50px;
     border-radius: 30px;
     background: #fff;
     border: 2px solid #fff;
     color: #97bf02;
     font-weight: 500;
     letter-spacing: 1px;
-    font-size: 1.1rem;
   }
 
   .dp-1 {
-    height: 50px;
+    height: 45px;
     border-radius: 30px;
     background: #fff;
     border: 2px solid #fff;
@@ -74,8 +77,9 @@
 
   .react-datepicker__input-container,
   .react-datepicker__input-container input {
-    width: 100px !important;
-    outline: none;
+    width: 105px !important;
+    padding-left: 0px;
+  
   }
 
   .react-datepicker-wrapper input {
