@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import RequireAuth from './components/RequireAuth';
+import Reservation from './components/SingleReservations';
 import Reservations from './components/Reservation';
 
 const App = () => {
