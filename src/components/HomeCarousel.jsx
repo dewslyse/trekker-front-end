@@ -42,6 +42,11 @@ const HomeCarousel = () => {
           >
             <div className={slideContent}>
               <h2>{destination.name}</h2>
+              <p>
+                From:
+                {' '}
+                <span>{destination.fee}</span>
+              </p>
               <button type="button" onClick={() => handleReservation}>Book now</button>
             </div>
           </div>
