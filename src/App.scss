@@ -1,13 +1,13 @@
 // SIDEBAR
-$link_background: #96C03F;
+$link_background: #96c03f;
 $link_color: #fff;
-$link_i_color: #4A4A4A;
-$sidebar_background: #FEFEFF;
+$link_i_color: #4a4a4a;
+$sidebar_background: #fefeff;
 $border_color: #ececee;
 $button_background: #c2fbd7;
 $button_color: #008000;
 
-$font-family: "acumin-pro","Acumin Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+$font-family: "acumin-pro","Acumin Pro","Helvetica Neue",helvetica,arial,sans-serif;
 $button_family: "CerebriSans-Regular","-apple-system","system-ui","Roboto",sans-serif;
 
 body {
@@ -69,7 +69,7 @@ body {
 }
 
 .li {
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .li:hover {
@@ -82,7 +82,7 @@ body {
 .logout {
   color: $button_color;
   text-decoration: none;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
 
@@ -142,7 +142,6 @@ li {
   justify-content: space-between;
   margin-right: 0;
   // margin-bottom: auto;
-  
 }
 
 .heading {
@@ -164,8 +163,8 @@ li {
   margin-top: -1rem;
   font-family: $font-family;
   font-weight: bold;
-  color: #C8C8C8;
-  font-size: 0.7rem;  
+  color: #c8c8c8;
+  font-size: 0.7rem;
 }
 
 .sub1 {
@@ -175,10 +174,9 @@ li {
   margin-top: 1rem;
   font-family: $font-family;
   font-weight: bold;
-  color: #C8C8C8;
+  color: #c8c8c8;
   font-size: 0.7rem;
 }
-
 
 .carousel-item {
   width: 20%;
@@ -244,14 +242,13 @@ li {
   justify-content: space-around;
   align-items: center;
   color: #fff;
-  background: $link_background!important;
+  background: $link_background !important;
   padding-left: 3rem;
 }
 
 .react-multiple-carousel__arrow--left {
   border-radius: 0 4rem 4rem 0 !important;
 }
-
 
 // .react-multiple-carousel__arrow--right {
 //   border-radius: 0 4rem 4rem 0 !important;
