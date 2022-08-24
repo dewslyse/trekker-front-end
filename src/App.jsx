@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import RequireAuth from './components/RequireAuth';
+import Reservations from './components/Reservation';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -27,8 +28,8 @@ const App = () => {
           {/* Protected routes */}
           <Route element={<RequireAuth />}>
             <Route path="destinations/:id" element={<div>Destination</div>} />
-            <Route path="destinations/:id/reservations" element={<div>Reservations</div>} />
-            <Route path="/*" element={<Destinations />} />
+            <Route path="destinations/:id/reservations" element={<Reservations />} />
+            <Route path="/*" element={<Reservations />} />
           </Route>
         </Route>
 
