@@ -12,9 +12,10 @@ $button_family: "CerebriSans-Regular","-apple-system","system-ui","Roboto",sans-
 
 body {
   box-sizing: border-box;
-  // overflow: hidden;
-  height: 100vh;
+  scroll-behavior: none;
+  height: 90vh;
   width: 100vw;
+  position: fixed;
 }
 
 .sidebar {
@@ -124,24 +125,21 @@ li {
 
 .destinations_container {
   width: 80vw;
-  height: 80vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 15rem;
+  padding-left: 9.5rem;
   overflow-y: hidden;
-  // padding-right: 25rem;
 }
 
 .carousel {
-  width: 95%;
-  height: 80rem;
+  width: 100%;
   vertical-align: middle;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   margin-right: 0;
-  // margin-bottom: auto;
 }
 
 .heading {
@@ -179,13 +177,8 @@ li {
 }
 
 .carousel-item {
-  width: 20%;
-  height: 40%;
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
-  margin: 0.5em;
-  padding: 0 2.5em;
 }
 
 .dimage {
@@ -204,11 +197,9 @@ li {
   color: #101111;
   text-transform: uppercase;
   margin-top: -2.2rem;
-  margin-left: 1rem;
 }
 
 .carousel-data {
-  width: 100%;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -216,20 +207,19 @@ li {
 }
 
 .dabout {
-  margin: 0;
+  padding: 0.5rem 2rem;
+  font-family: $font-family;
+  font-weight: bold;
+  color: #c8c8c8;
+  font-size: 0.7rem;
 }
 
 .btn {
-  margin-left: 1.6rem;
   margin-top: -0.5rem;
 }
 
 .title {
   margin-left: -3%;
-}
-
-.img {
-  margin: 0 4rem;
 }
 
 .react-multiple-carousel__arrow {
@@ -243,13 +233,20 @@ li {
   align-items: center;
   color: #fff;
   background: $link_background !important;
-  padding-left: 3rem;
 }
 
 .react-multiple-carousel__arrow--left {
   border-radius: 0 4rem 4rem 0 !important;
 }
 
-// .react-multiple-carousel__arrow--right {
-//   border-radius: 0 4rem 4rem 0 !important;
-// }
+.react-multiple-carousel__arrow--right {
+  border-radius: 4rem 0  0 4rem !important;
+}
+
+.react-multiple-carousel__arrow::before {
+  height: 2rem !important;
+  width: 2rem !important;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  display: block;
+} 
