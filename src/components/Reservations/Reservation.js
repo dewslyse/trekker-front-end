@@ -22,11 +22,11 @@ const Reservations = () => {
   const createReservation = (e) => {
     e.preventDefault();
     const reservation = {
-      // destination_id: id,
-      // start_date: startDate.toLocaleDateString(),
-      // end_date: '8/29/2022',
-      // fee: 20.21,
-      start_date: '2020-01-01', end_date: '2020-01-01', fee: '100', destination_id: id,
+      destination_id: id,
+      start_date: startDate.toLocaleDateString(),
+      end_date: '8/29/2022',
+      fee: 20.21,
+      // start_date: '2020-01-01', end_date: '2020-01-01', fee: '100', destination_id: id,
     };
     dispatch(addReservation((reservation), reservation.destination_id));
   };
@@ -64,7 +64,7 @@ const Reservations = () => {
 
                 <DropdownButton align="end" title={title} id="down">
                   {destinations.map((destination) => {
-                    if (destination.id === id) {
+                    if (destination.id === 1) {
                       return (<Dropdown.Item eventKey="1" onClick={() => setTitle(destination.city_name)}>{destination.city_name}</Dropdown.Item>);
                     }
                     return '';
