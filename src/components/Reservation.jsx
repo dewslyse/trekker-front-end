@@ -9,8 +9,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 const Reservations = () => {
   const destinations = useSelector((state) => state.destinations);
-  const [startDate, setStartDate] = useState(Date.now);
-  const [endDate, setEndDate] = useState(Date.now);
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
   const [data, setData] = useState({ id: 1, title: 'Serengeti' });
 
   const { id, title } = data;
@@ -60,17 +60,17 @@ const Reservations = () => {
                   onChange={(newValue) => {
                     setStartDate(newValue);
                   }}
-                  dateFormat="yyyy-MM-dd"
+                 
                 />
 
                 <DatePicker
                   className="dp-1"
                   selected={endDate}
                   value={endDate}
+                
                   onChange={(newValue) => {
                     setEndDate(newValue);
                   }}
-                  dateFormat="yyyy-MM-dd"
                 />
 
                 <DropdownButton align="end" id="down" title={title}>
