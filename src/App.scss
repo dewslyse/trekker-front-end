@@ -188,6 +188,110 @@ li {
   padding: 0 2.5em;
 }
 
+.r-d {
+  margin: auto;
+}
+
+.r-c {
+  height: 100vh;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .r-h {
+    border-bottom: 1.5px solid #c4dd78;
+    margin-bottom: 2rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  .r-d h1 {
+    font-size: 2rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding-top: 50px;
+  }
+
+  .r-d p {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  .r-b {
+    margin: 2rem 0;
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    padding-top: 40px;
+  }
+
+  .react-datepicker-wrapper,
+  #down,
+  .btn-1 {
+    width: 150px;
+    gap: 20px;
+    height: 50px;
+    border-radius: 30px;
+    background: #fff;
+    border: 2px solid #fff;
+    color: #97bf02;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+  .dp-1 {
+    height: 45px;
+    border-radius: 30px;
+    background: #fff;
+    border: 2px solid #fff;
+    color: #97bf02;
+    font-weight: 500;
+    margin-left: 20px;
+    letter-spacing: 1px;
+    font-size: 1.1rem;
+    box-shadow: none;
+  }
+
+  .btn-1 .react-datepicker-wrapper {
+    width: 200px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .react-datepicker__input-container,
+  .react-datepicker__input-container input {
+    width: 105px !important;
+    padding-left: 0;
+
+    .react-datepicker-ignore-onclickoutside {
+      border: 2px solid white;
+      outline: none;
+    }
+  }
+
+  .react-datepicker-wrapper input {
+    color: #97bf02;
+    border: none;
+  }
+
+  .btn-1:hover,
+  #down {
+    color: white;
+    background: #97bf02;
+    border: 2px solid #c4dd78;
+    padding: 10px;
+  }
+
+  #down {
+    background: #fff;
+    color: #97bf02;
+  }
+}
+
 .dimage {
   width: 90%;
   border-radius: 100%;
