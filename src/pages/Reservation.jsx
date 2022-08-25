@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
-import { useSelector, useDispatch } from 'react-redux';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
+import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import Sidebar from '../components/Sidebar';
 import { addReservation } from '../store/actions/reservationActions';
 import { fetchDestinations } from '../store/actions/destinationActions';
 import 'react-datepicker/dist/react-datepicker.css';
 import './Reservation.scss';
 
-const Reservations = () => {
-  const destinations = useSelector((state) => state.destinations);
+const Reservations = ({ id }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const [data, setData] = useState({ id: 1, title: 'Serengeti' });
 
-  const { id, title } = data;
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchDestinations());
@@ -27,10 +23,6 @@ const Reservations = () => {
       startDate, endDate, id,
     };
     dispatch(addReservation(reservation));
-  };
-
-  const handledropdownChange = (id, title) => {
-    setData({ id, title });
   };
 
   return (
@@ -50,10 +42,9 @@ const Reservations = () => {
       >
         <div className="r-d">
           <div className="r-h">
-            <h1>Book your dream vacation</h1>
+            <h3>Book your dream vacation</h3>
           </div>
           <div>
-            <p>Select your dream location to enjoy the best holiday ever!</p>
             <form onSubmit={createReservation} method="post">
               <div className="r-b">
                 <DatePicker
@@ -72,17 +63,10 @@ const Reservations = () => {
                   onChange={(newValue) => {
                     setEndDate(newValue);
                   }}
-                  dateFormat="yyyy-MM-dd"
                 />
 
-                <DropdownButton align="end" id="down" title={title}>
-                  { destinations.map((destination) => (
-                    <Dropdown.Item key={destination.id} eventKey="1" onClick={() => handledropdownChange(destination.id, destination.city_name)} selected={destination.city_name}>{destination.city_name}</Dropdown.Item>
-                  ))}
-                </DropdownButton>
-
-                <button type="submit" className="btn-1">Book now</button>
               </div>
+              <button type="submit" className="btn-1">Book now</button>
 
             </form>
 
@@ -91,6 +75,10 @@ const Reservations = () => {
       </div>
     </>
   );
+};
+
+Reservations.propTypes = {
+  id: PropTypes.number.isRequired,
 };
 
 export default Reservations;

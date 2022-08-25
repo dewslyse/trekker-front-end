@@ -51,10 +51,13 @@
 .wrp {
   display: flex;
   flex-wrap: wrap;
+  max-width: 120rem;
+  margin: 5rem auto;
+  justify-content: center;
 
   .card {
     margin: 1.5rem;
-    width: 28rem;
+    width: 25rem;
   }
 
   .card-img,
@@ -74,3 +77,8 @@
   color: var(--color-danger);
 }
 
+.resrvation-title {
+  text-align: center;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}

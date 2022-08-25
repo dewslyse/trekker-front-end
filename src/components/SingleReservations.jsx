@@ -39,6 +39,7 @@ const Reservation = () => {
   return (
     <>
       <Sidebar />
+      <h3 className="resrvation-title">Reservations</h3>
       <div className="wrp">
 
         {
