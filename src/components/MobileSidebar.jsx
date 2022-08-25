@@ -14,7 +14,7 @@ const MobileSidebar = () => {
   // const closeMenu = {} => setOpen(false);
 
   return (
-    <div className="mobile-sidebar">
+    <div className="mobile-sidebar overlay">
       {open ? closeicon : menuicon}
       {open && <SidebarLinks />}
     </div>

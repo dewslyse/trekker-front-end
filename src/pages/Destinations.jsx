@@ -34,9 +34,6 @@ const Destinations = () => {
 
   return (
     <div className="destinations_container">
-      {/* <nav>
-        <img src={mobilemenu} className="menu" alt="menu" />
-      </nav> */}
       <h1 className="heading title">LATEST SAFARIS</h1>
       <p className="sub title">Have a funtastic experience</p>
       <p className="sub1 title">```````````````````````</p>
