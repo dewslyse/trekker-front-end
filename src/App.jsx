@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.scss';
 import Destinations from './pages/Destinations';
@@ -8,21 +8,30 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import RequireAuth from './components/RequireAuth';
+import Reservations from './pages/Reservation';
+import Notification from './components/Notification';
 import Destination from './pages/Destination';
-import Reservations from './components/Reservation';
 import Reservation from './components/SingleReservations';
 
 const App = () => {
   const dispatch = useDispatch();
+  const notification = useSelector((state) => state.ui.notification);
 
   useEffect(() => {
     dispatch(fetchDestinations());
-  }, []);
+  }, [dispatch]);
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />}>
+    <>
+      {notification.isOpen && (
+      <Notification
+        message={notification.message}
+        error={notification.isError}
+      />
+      )}
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
           {/* Public routes */}
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
@@ -35,10 +44,10 @@ const App = () => {
 
             <Route path="/*" element={<Reservations />} />
           </Route>
-        </Route>
+        </Routes>
+      </Router>
 
-      </Routes>
-    </Router>
+    </>
   );
 };
 

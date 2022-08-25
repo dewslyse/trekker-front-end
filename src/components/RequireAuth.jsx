@@ -13,11 +13,11 @@ const RequireAuth = () => {
   useEffect(() => {
     const loggedIn = localStorage.getItem('LOGGED_IN');
     if (loggedIn) dispatch(login());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(checkLoginStatus());
-  }, []);
+  }, [dispatch]);
 
   if (!isLoggedIn) {
     dispatch(showNotification({ message: 'Please sign in first', isError: true }));

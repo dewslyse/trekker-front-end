@@ -3,6 +3,7 @@ import DatePicker from 'react-datepicker';
 import { useSelector, useDispatch } from 'react-redux';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
+import Sidebar from '../components/Sidebar';
 import { addReservation } from '../store/actions/reservationActions';
 import { fetchDestinations } from '../store/actions/destinationActions';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -17,7 +18,7 @@ const Reservations = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchDestinations());
-  }, []);
+  }, [dispatch]);
 
   const createReservation = (e) => {
     e.preventDefault();
@@ -33,6 +34,7 @@ const Reservations = () => {
 
   return (
     <>
+      <Sidebar />
       <div
         className="r-c"
         style={{
@@ -60,7 +62,6 @@ const Reservations = () => {
                   onChange={(newValue) => {
                     setStartDate(newValue);
                   }}
-                 
                 />
 
                 <DatePicker
@@ -70,7 +71,7 @@ const Reservations = () => {
                   onChange={(newValue) => {
                     setEndDate(newValue);
                   }}
-                  dateFormat = "yyyy-MM-dd"
+                  dateFormat="yyyy-MM-dd"
                 />
 
                 <DropdownButton align="end" id="down" title={title}>
