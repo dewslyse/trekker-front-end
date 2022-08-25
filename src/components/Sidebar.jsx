@@ -4,6 +4,7 @@ import { useNavigate, Link, NavLink } from 'react-router-dom';
 import { logoutUser } from '../store/actions/userActions';
 import { logout } from '../store/reducers/userReducer';
 import trekkerlogo from '../images/trekkerlogo.png';
+import '../styles/sidebar.scss';
 
 const Sidebar = () => {
   const isLoggedIn = localStorage.getItem('LOGGED_IN');

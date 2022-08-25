@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Item from './Item';
+import '../styles/destinations.scss';
 
 // const responsive = [
 //   { width: 1, itemsToShow: 1 },
