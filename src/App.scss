@@ -7,6 +7,7 @@
   --warm-grey: #888;
   --color-primary: #97bf02;
   --color-primary-dark: #6e9e01;
+  --color-danger: #e80000;
 }
 
 // ///////////////////////////// Global Reset
@@ -56,4 +57,15 @@ h2 {
   @media (max-width: 560px) {
     font-size: 2rem;
   }
+}
+
+h3 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-bottom: 1px solid var(--grey-border);
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.scss';
@@ -16,10 +16,15 @@ import Reservation from './components/SingleReservations';
 const App = () => {
   const dispatch = useDispatch();
   const notification = useSelector((state) => state.ui.notification);
+  const [destinationID, setDestinationID] = useState(1);
 
   useEffect(() => {
     dispatch(fetchDestinations());
   }, [dispatch]);
+
+  const handleDestination = (id) => {
+    setDestinationID(id);
+  };
 
   return (
     <>
@@ -38,11 +43,10 @@ const App = () => {
           <Route path="destinations" element={<Destinations />} />
           {/* Protected routes */}
           <Route element={<RequireAuth />}>
-            <Route path="destinations/:id" element={<Destination />} />
-            <Route path="destinations/:id/reservations" element={<Reservations />} />
+            <Route path="destinations/:id" element={<Destination handleDestination={handleDestination} />} />
+            <Route path="reservations" element={<Reservations id={destinationID} />} />
             <Route path="reservations/delete" element={<Reservation />} />
-
-            <Route path="/*" element={<Reservations />} />
+            <Route path="/*" element={<Destination />} />
           </Route>
         </Routes>
       </Router>

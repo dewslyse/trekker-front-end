@@ -2,43 +2,61 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Card from 'react-bootstrap/Card';
 import { removeReservation, fetchReservations } from '../store/actions/reservationActions';
-import { fetchDestinations } from '../store/actions/destinationActions';
 import './SingleReservations.scss';
+import Sidebar from './Sidebar';
 
 const Reservation = () => {
   const reservations = useSelector((state) => state.reservations);
+  const destinations = useSelector((state) => state.destinations);
+  const [reservationns, setReservationn] = React.useState([]);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchDestinations());
-  }, []);
+
   useEffect(() => {
     dispatch(fetchReservations());
+  }, []);
+
+  useEffect(() => {
+    setReservationn(reservations);
   }, [reservations]);
-  const destinations = useSelector((state) => state.destinations);
 
   const deleteRes = (e, id) => {
     e.preventDefault();
+    setReservationn(reservationns.filter((reservation) => reservation.id !== id));
     dispatch(removeReservation(id));
   };
 
-  return (
-    <div className="wrp">
+  if (!reservationns.length) {
+    return (
+      <>
+        <Sidebar />
+        <div className="noReservation">
+          <h3>You have no reservations</h3>
+        </div>
+      </>
+    );
+  }
 
-      {
+  return (
+    <>
+      <Sidebar />
+      <h3 className="resrvation-title">Reservations</h3>
+      <div className="wrp">
+
+        {
        destinations.map((destination) => (
-         reservations.map((reservation) => (
+         reservationns.map((reservation) => (
            destination.id === reservation.destination_id && (
            <div id="m-1" key={reservation.id}>
-             <Card style={{ width: '18rem' }}>
+             <Card className="card">
                <Card.Img variant="top" src={destination.image_url} />
                <Card.Body>
-                 <Card.Title>{destination.city_name}</Card.Title>
+                 <Card.Title className="city-name">{destination.city_name}</Card.Title>
                  <Card.Text id="ct">
-                   <div>
+                   <div className="date">
                      <p className="p-r">Start Date</p>
                      <p className="p-b">{reservation.start_date}</p>
                    </div>
-                   <div>
+                   <div className="date">
                      <p className="p-r">End Date</p>
                      <p className="p-b">{reservation.end_date}</p>
                    </div>
@@ -56,8 +74,8 @@ const Reservation = () => {
        ))
 
     }
-    </div>
-
+      </div>
+    </>
   );
 };
 

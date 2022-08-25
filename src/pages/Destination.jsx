@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import { useParams, Link } from 'react-router-dom';
 // import Sidebar from '../components/Sidebar';
 import { fetchDestinations } from '../store/actions/destinationActions';
 // import './Destination.module.scss';
 import styles from './Destination.module.scss';
 
-const Destination = () => {
+const Destination = ({ handleDestination }) => {
   const destinations = useSelector((state) => state.destinations);
   const dispatch = useDispatch();
 
@@ -38,7 +39,7 @@ const Destination = () => {
               </div>
               <p className={destinationFee}>{destination.fee}</p>
               <Link to="/reservations">
-                <button type="button">Reserve</button>
+                <button type="button" onClick={() => handleDestination(destination.id)}>Reserve</button>
               </Link>
             </div>
           </div>
@@ -47,6 +48,10 @@ const Destination = () => {
       </div>
     </>
   );
+};
+
+Destination.propTypes = {
+  handleDestination: PropTypes.func.isRequired,
 };
 
 export default Destination;
