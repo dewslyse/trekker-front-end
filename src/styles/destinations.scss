@@ -1,0 +1,196 @@
+@import 'variables';
+
+body {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  max-height: 90%;
+  max-width: 100%;
+  overflow-x: unset;
+  overflow-y: unset;
+  //position: relative;
+}
+
+// DESTINATIONS
+// Carousel
+
+.destinations_container {
+  width: 80vw;
+  height: 100%;
+  display: flex;
+  // position: right;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 9.25rem;
+  overflow-x: hidden;
+  position: static;
+}
+
+.menu {
+  display: none;
+}
+
+.carousel {
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin-right: 0;
+}
+
+.heading {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-family: $font-family;
+  font-weight: bold;
+  font-size: 2em;
+  word-spacing: 5px;
+  color: #101111;
+  margin-top: 3rem;
+}
+
+.sub {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: -1rem;
+  font-family: $font-family;
+  font-weight: bold;
+  color: #c8c8c8;
+  font-size: 0.7rem;
+}
+
+.sub1 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  font-family: $font-family;
+  font-weight: bold;
+  color: #c8c8c8;
+  font-size: 0.7rem;
+}
+
+.carousel-item {
+  display: flex;
+  align-items: baseline;
+}
+
+.dimage {
+  width: 90%;
+  border-radius: 100%;
+  height: 90%;
+  margin: 0;
+}
+
+.dname {
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  font-family: $font-family;
+  padding: 0.5em;
+  color: #101111;
+  text-transform: uppercase;
+  margin-top: -2.2rem;
+}
+
+.carousel-data {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+
+.dabout {
+  padding: 0.5rem 2rem 2rem 2rem;
+  font-family: $font-family;
+  font-weight: bold;
+  color: #c8c8c8;
+  font-size: 0.7rem;
+  margin-top: -0.5rem;
+}
+
+.btn {
+  margin-top: -0.5rem;
+}
+
+.title {
+  margin-left: -3%;
+}
+
+.react-multiple-carousel__arrow {
+  margin-left: -3rem;
+  margin-right: -3rem;
+  // margin-top: auto;
+  width: 4rem;
+  height: 3rem;
+  font-size: 0.5rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  vertical-align: middle;
+  color: #fff;
+  background: $arrow_before !important;
+  margin-top: 4rem;
+
+  &:hover {
+    background: $link_background !important;
+  }
+}
+
+.react-multiple-carousel__arrow--left {
+  border-radius: 0 4rem 4rem 0 !important;
+  align-self: center;
+}
+
+.react-multiple-carousel__arrow--right {
+  border-radius: 4rem 0  0 4rem !important;
+  align-self: center;
+}
+
+.react-multiple-carousel__arrow::before {
+  height: 2rem !important;
+  width: 2rem !important;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  display: block;
+}
+
+@media only screen and (max-width: 768px) {
+  .destinations_container {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .dimage {
+    width: 95%;
+    border-radius: 100%;
+    height: 95%;
+  }
+  // .react-multiple-carousel__item {
+  //   margin: -3rem;
+  // }
+
+  .react-multiple-carousel-track {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .menu {
+    display: block;
+    width: 25px;
+    height: 20px;
+    margin-left: 2%;
+    margin-top: 15px;
+  }
+
+  .dname {
+    margin-top: 2.2rem;
+  }
+
+  .react-multiple-carousel__arrow {
+    width: 5rem;
+  }
+}

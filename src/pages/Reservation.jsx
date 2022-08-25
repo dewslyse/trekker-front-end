@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 import Sidebar from '../components/Sidebar';
 import { addReservation } from '../store/actions/reservationActions';
 import { fetchDestinations } from '../store/actions/destinationActions';
-import 'react-datepicker/dist/react-datepicker.css';
+// import 'react-datepicker/dist/react-datepicker.css';
+import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import './Reservation.scss';
 
 const Reservations = ({ id }) => {
