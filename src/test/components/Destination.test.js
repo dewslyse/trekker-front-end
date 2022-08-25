@@ -3,13 +3,14 @@ import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import store from '../../store/configureStore';
-import Reservations from '../../pages/Reservation';
+import Destinations from '../../pages/Destinations';
 
 
-describe('Reservation Page', () => {
+
+describe('Destination Page', () => {
   it('renders correctly', () => {
-    const tree = render(<Provider store={store}><Router><Reservations /></Router></Provider>);
+    window.localStorage.setItem('user_id', 1);
+    const tree = render(<Provider store={store}><Router><Destinations /></Router></Provider>);
     expect(tree).toMatchSnapshot();
   });
 });
-
