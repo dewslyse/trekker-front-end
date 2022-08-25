@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Card from 'react-bootstrap/Card';
 import { removeReservation, fetchReservations } from '../store/actions/reservationActions';
+import { getReservation } from '../store/reducers/reservationReducer';
 import { fetchDestinations } from '../store/actions/destinationActions';
 import './SingleReservations.scss';
 
@@ -13,11 +14,12 @@ const Reservation = () => {
   }, []);
   useEffect(() => {
     dispatch(fetchReservations());
-  }, [reservations]);
+  }, [dispatch]);
   const destinations = useSelector((state) => state.destinations);
 
   const deleteRes = (e, id) => {
     e.preventDefault();
+    dispatch(getReservation)
     dispatch(removeReservation(id));
   };
 
