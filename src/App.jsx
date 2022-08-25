@@ -44,7 +44,7 @@ const App = () => {
           {/* Protected routes */}
           <Route element={<RequireAuth />}>
             <Route path="destinations/:id" element={<Destination handleDestination={handleDestination} />} />
-            <Route path="destinations/:id/reservations" element={<Reservations id={destinationID} />} />
+            <Route path="reservations" element={<Reservations id={destinationID} />} />
             <Route path="reservations/delete" element={<Reservation />} />
             <Route path="/*" element={<Destination />} />
           </Route>
