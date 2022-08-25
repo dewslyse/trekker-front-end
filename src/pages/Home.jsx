@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styles from './Home.module.scss';
+import trekker from '../trekker.png';
 
 const Home = () => {
   const destinations = useSelector((state) => state.destinations);
@@ -10,7 +11,8 @@ const Home = () => {
 
   const {
     containerSlider, slide, activeAnim, containerDots,
-    dot, active, carouselInner, slideContent,
+    dot, active, carouselInner, slideContent, slideContentMain, slideContentSide,
+    slideContentSideMain, slideContentSideContent, contentWrapper, slideContentImg, logo,
   } = styles;
 
   const nextSlide = () => {
@@ -38,13 +40,24 @@ const Home = () => {
             style={{ backgroundImage: `linear-gradient(to top, #ffb400ba, #ffc642cc), url(${destination.image_url})`, backgroundSize: 'cover' }}
           >
             <div className={slideContent}>
-              <h2>{destination.name}</h2>
-              <p>
-                From:
-                {' '}
-                <span>{destination.fee}</span>
-              </p>
-              <Link to="login">Book now</Link>
+              <div
+                className={slideContentImg}
+                style={{ backgroundImage: `url(${destination.image_url})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+                alt="destination"
+              >
+                <img className={logo} src={trekker} alt="Logo" />
+
+              </div>
+              <div className={slideContentMain}>
+                <h2>{destination.name}</h2>
+                <div className={contentWrapper}>
+                  <div className={slideContentSide}>
+                    <p className={slideContentSideMain}>From </p>
+                    <p className={slideContentSideContent}>{destination.fee}</p>
+                  </div>
+                  <Link to="login">Book now</Link>
+                </div>
+              </div>
             </div>
           </div>
         ))}

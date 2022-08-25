@@ -25,7 +25,7 @@ const Register = () => {
   });
 
   const {
-    loginContainer, loginForm,
+    loginContainer, loginForm, error,
   } = styles;
 
   useEffect(() => {
@@ -116,7 +116,7 @@ const Register = () => {
               name="username"
               required
             />
-            {errors.username && <p className="error">{errors.username}</p>}
+            {errors.username && <p className={error}>{errors.username}</p>}
 
             <label htmlFor="full_name">Full name</label>
             <input
@@ -127,7 +127,7 @@ const Register = () => {
               name="full_name"
               required
             />
-            {errors.full_name && <p className="error">{errors.full_name}</p>}
+            {errors.full_name && <p className={error}>{errors.full_name}</p>}
 
             <label htmlFor="email">Email</label>
             <input
@@ -138,7 +138,7 @@ const Register = () => {
               name="email"
               required
             />
-            {errors.email && <p className="error">{errors.email}</p>}
+            {errors.email && <p className={error}>{errors.email}</p>}
 
             <label htmlFor="password">Password</label>
             <input
@@ -149,7 +149,7 @@ const Register = () => {
               name="password"
               required
             />
-            {errors.password && <p className="error">{errors.password}</p>}
+            {errors.password && <p className={error}>{errors.password}</p>}
 
             <label htmlFor="password_confirmation">Password confirmation</label>
             <input
@@ -160,7 +160,8 @@ const Register = () => {
               name="password_confirmation"
               required
             />
-            {errors.password_confirmation && <p className="error">{errors.password_confirmation}</p>}
+            {errors.password_confirmation
+            && <p className={error}>{errors.password_confirmation}</p>}
 
             <button type="submit">Register</button>
             <Link to="/login">Already have an account? Login</Link>
