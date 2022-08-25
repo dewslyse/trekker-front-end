@@ -4,6 +4,9 @@ import { addReservation, removeReservation, fetchReservations } from '../actions
 const reservationSlice = createSlice({
   name: 'reservation',
   initialState: [],
+  reducers: {
+    getReservation: (state) => state,
+  },
   extraReducers: {
     [addReservation.fulfilled]: (state, { payload }) => {
       state.push(payload);
@@ -15,6 +18,6 @@ const reservationSlice = createSlice({
   },
 });
 
-const { reducer } = reservationSlice;
-
+const { reducer, actions } = reservationSlice;
+export const { getReservation } = actions;
 export default reducer;
