@@ -1,41 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Destination Page renders correctly 1`] = `
+exports[`Login to app renders correctly 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <div>
-        Sidebar
-        <a
-          href="/login"
-        >
-          Login
-        </a>
-        <a
-          href="/register"
-        >
-          Register
-        </a>
+      <div
+        class="containerSlider"
+      >
+        <div
+          class="carouselInner"
+        />
+        <div
+          class="containerDots"
+        />
       </div>
-      <div />
     </div>
   </body>,
   "container": <div>
-    <div>
-      Sidebar
-      <a
-        href="/login"
-      >
-        Login
-      </a>
-      <a
-        href="/register"
-      >
-        Register
-      </a>
+    <div
+      class="containerSlider"
+    >
+      <div
+        class="carouselInner"
+      />
+      <div
+        class="containerDots"
+      />
     </div>
-    <div />
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

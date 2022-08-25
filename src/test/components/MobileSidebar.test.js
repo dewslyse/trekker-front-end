@@ -2,15 +2,13 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
+import Register from '../../pages/Register';
 import store from '../../store/configureStore';
-import Destinations from '../../pages/Destinations';
 
 
-
-describe('Destination Page', () => {
+describe('Login to app', () => {
   it('renders correctly', () => {
-    window.localStorage.setItem('destination_id', 1);
-    const tree = render(<Provider store={store}><Router><Destinations /></Router></Provider>);
+    const tree = render(<Provider store={store}><Router><Register /></Router></Provider>);
     expect(tree).toMatchSnapshot();
   });
 });

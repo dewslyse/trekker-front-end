@@ -5,18 +5,90 @@ Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <div>
-        Sidebar
-        <a
-          href="/login"
+      <div
+        class="sidebar"
+      >
+        <img
+          alt="logo"
+          class="logo"
+          src="trekkerlogo.png"
+        />
+        <ul
+          class="sidebar_content"
         >
-          Login
-        </a>
-        <a
-          href="/register"
+          <li
+            class="page_link"
+          >
+            <a
+              activeclassname="active-link"
+              class="link"
+              href="/Destinations"
+            >
+              DESTINATIONS
+            </a>
+          </li>
+          <li
+            class="page_link"
+          >
+            <a
+              activeclassname="active-link"
+              class="link"
+              href="/Destinations"
+            >
+              RESERVE
+            </a>
+          </li>
+          <li
+            class="page_link"
+          >
+            <a
+              activeclassname="active-link"
+              class="link"
+              href="/Destinations"
+            >
+              ADD SAFARI
+            </a>
+          </li>
+          <li
+            class="page_link"
+          >
+            <a
+              activeclassname="active-link"
+              class="link"
+              href="/Destinations"
+            >
+              DELETE SAFARI
+            </a>
+          </li>
+        </ul>
+        <div
+          class="links"
         >
-          Register
-        </a>
+          <button
+            class="li"
+            type="button"
+          >
+            <a
+              class="enter"
+              href="/login"
+            >
+              Login
+            </a>
+          </button>
+          <br />
+          <button
+            class="li"
+            type="button"
+          >
+            <a
+              class="enter"
+              href="/register"
+            >
+              Register
+            </a>
+          </button>
+          <br />
+        </div>
       </div>
       <div
         class="r-c"
@@ -28,14 +100,11 @@ Object {
           <div
             class="r-h"
           >
-            <h1>
+            <h3>
               Book your dream vacation
-            </h1>
+            </h3>
           </div>
           <div>
-            <p>
-              Select your dream location to enjoy the best holiday ever!
-            </p>
             <form
               method="post"
             >
@@ -64,29 +133,17 @@ Object {
                     <input
                       class="dp-1"
                       type="text"
-                      value="2022-08-25"
+                      value="08/25/2022"
                     />
                   </div>
                 </div>
-                <div
-                  class="dropdown"
-                >
-                  <button
-                    aria-expanded="false"
-                    class="dropdown-toggle btn btn-primary"
-                    id="down"
-                    type="button"
-                  >
-                    Serengeti
-                  </button>
-                </div>
-                <button
-                  class="btn-1"
-                  type="submit"
-                >
-                  Book now
-                </button>
               </div>
+              <button
+                class="btn-1"
+                type="submit"
+              >
+                Book now
+              </button>
             </form>
           </div>
         </div>
@@ -94,18 +151,90 @@ Object {
     </div>
   </body>,
   "container": <div>
-    <div>
-      Sidebar
-      <a
-        href="/login"
+    <div
+      class="sidebar"
+    >
+      <img
+        alt="logo"
+        class="logo"
+        src="trekkerlogo.png"
+      />
+      <ul
+        class="sidebar_content"
       >
-        Login
-      </a>
-      <a
-        href="/register"
+        <li
+          class="page_link"
+        >
+          <a
+            activeclassname="active-link"
+            class="link"
+            href="/Destinations"
+          >
+            DESTINATIONS
+          </a>
+        </li>
+        <li
+          class="page_link"
+        >
+          <a
+            activeclassname="active-link"
+            class="link"
+            href="/Destinations"
+          >
+            RESERVE
+          </a>
+        </li>
+        <li
+          class="page_link"
+        >
+          <a
+            activeclassname="active-link"
+            class="link"
+            href="/Destinations"
+          >
+            ADD SAFARI
+          </a>
+        </li>
+        <li
+          class="page_link"
+        >
+          <a
+            activeclassname="active-link"
+            class="link"
+            href="/Destinations"
+          >
+            DELETE SAFARI
+          </a>
+        </li>
+      </ul>
+      <div
+        class="links"
       >
-        Register
-      </a>
+        <button
+          class="li"
+          type="button"
+        >
+          <a
+            class="enter"
+            href="/login"
+          >
+            Login
+          </a>
+        </button>
+        <br />
+        <button
+          class="li"
+          type="button"
+        >
+          <a
+            class="enter"
+            href="/register"
+          >
+            Register
+          </a>
+        </button>
+        <br />
+      </div>
     </div>
     <div
       class="r-c"
@@ -117,14 +246,11 @@ Object {
         <div
           class="r-h"
         >
-          <h1>
+          <h3>
             Book your dream vacation
-          </h1>
+          </h3>
         </div>
         <div>
-          <p>
-            Select your dream location to enjoy the best holiday ever!
-          </p>
           <form
             method="post"
           >
@@ -153,29 +279,17 @@ Object {
                   <input
                     class="dp-1"
                     type="text"
-                    value="2022-08-25"
+                    value="08/25/2022"
                   />
                 </div>
               </div>
-              <div
-                class="dropdown"
-              >
-                <button
-                  aria-expanded="false"
-                  class="dropdown-toggle btn btn-primary"
-                  id="down"
-                  type="button"
-                >
-                  Serengeti
-                </button>
-              </div>
-              <button
-                class="btn-1"
-                type="submit"
-              >
-                Book now
-              </button>
             </div>
+            <button
+              class="btn-1"
+              type="submit"
+            >
+              Book now
+            </button>
           </form>
         </div>
       </div>

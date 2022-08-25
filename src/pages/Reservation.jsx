@@ -55,6 +55,7 @@ const Reservations = ({ id }) => {
                   onChange={(newValue) => {
                     setStartDate(newValue);
                   }}
+                  data-testid="add-word-end-date"
                 />
 
                 <DatePicker
@@ -64,10 +65,11 @@ const Reservations = ({ id }) => {
                   onChange={(newValue) => {
                     setEndDate(newValue);
                   }}
+                  data-testid="add-word-startdate"
                 />
 
               </div>
-              <button type="submit" className="btn-1">Book now</button>
+              <button type="submit" className="btn-1" data-testid="add-word-button">Book now</button >
 
             </form>
 
