@@ -1,7 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
 import Carousel from 'react-multi-carousel';
+import Sidebar from '../components/Sidebar';
+// import { useNavigate } from 'react-router-dom';
 import 'react-multi-carousel/lib/styles.css';
 import Item from './Item';
 import '../styles/destinations.scss';
@@ -33,29 +34,32 @@ const Destinations = () => {
   // };
 
   return (
-    <div className="destinations_container">
-      <h1 className="heading title">LATEST SAFARIS</h1>
-      <p className="sub title">Have a funtastic experience</p>
-      <p className="sub1 title">```````````````````````</p>
-      <Carousel responsive={responsive} className="carousel" infinite>
-        {destinations.map((destination) => (
-          <div key={destination.id} className="carousel-data">
-            <Item className="img">
-              <div>
-                <img
-                  className="dimage"
-                  src={destination.image_url}
-                  alt={destination.name}
-                />
-              </div>
-            </Item>
-            <h5 className="dname">{destination.name}</h5>
-            <p className="sub1 btn">```````````````````````</p>
-            <p className="dabout">{destination.description}</p>
-          </div>
-        ))}
-      </Carousel>
-    </div>
+    <>
+      <Sidebar />
+      <div className="destinations_container">
+        <h1 className="heading title">LATEST SAFARIS</h1>
+        <p className="sub title">Have a funtastic experience</p>
+        <p className="sub1 title">```````````````````````</p>
+        <Carousel responsive={responsive} className="carousel" infinite>
+          {destinations.map((destination) => (
+            <div key={destination.id} className="carousel-data">
+              <Item className="img">
+                <div>
+                  <img
+                    className="dimage"
+                    src={destination.image_url}
+                    alt={destination.name}
+                  />
+                </div>
+              </Item>
+              <h5 className="dname">{destination.name}</h5>
+              <p className="sub1 btn">```````````````````````</p>
+              <p className="dabout">{destination.description}</p>
+            </div>
+          ))}
+        </Carousel>
+      </div>
+    </>
   );
 };
 
