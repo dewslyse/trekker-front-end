@@ -1,9 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate, Link, NavLink } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { logoutUser } from '../store/actions/userActions';
 import { logout } from '../store/reducers/userReducer';
 import trekkerlogo from '../images/trekkerlogo.png';
+import SidebarLinks from './SidebarLinks';
 import '../styles/sidebar.scss';
 
 const Sidebar = () => {
@@ -22,47 +23,7 @@ const Sidebar = () => {
     <div className="sidebar">
       <img src={trekkerlogo} alt="logo" className="logo" />
 
-      <ul className="sidebar_content">
-        <div className="page_link">
-          <NavLink
-            to="/Destinations"
-            className="link"
-            activeClassName="active-link"
-          >
-            DESTINATIONS
-          </NavLink>
-        </div>
-
-        <li className="page_link">
-          <NavLink
-            to="/Destinations"
-            className="link"
-            activeClassName="active-link"
-          >
-            RESERVE
-          </NavLink>
-        </li>
-
-        <li className="page_link">
-          <NavLink
-            to="/Destinations"
-            className="link"
-            activeClassName="active-link"
-          >
-            ADD SAFARI
-          </NavLink>
-        </li>
-
-        <li className="page_link">
-          <NavLink
-            to="/Destinations"
-            className="link"
-            activeClassName="active-link"
-          >
-            DELETE SAFARI
-          </NavLink>
-        </li>
-      </ul>
+      <SidebarLinks />
 
       <div className="links">
         {!isLoggedIn && (<button type="button" className="li"><Link to="/login" className="enter">Login</Link></button>)}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
-import Sidebar from '../components/Sidebar';
+import Navigation from '../components/Navigation';
 import Notification from '../components/Notification';
 
 const Home = () => {
@@ -9,7 +9,7 @@ const Home = () => {
 
   return (
     <>
-      <Sidebar />
+      <Navigation />
       {notification && (<Notification message={notification.message} />)}
       <Outlet />
     </>

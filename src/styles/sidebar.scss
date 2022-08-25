@@ -8,17 +8,17 @@
 //   position: fixed;
 // }
 
-.sidebar {
-  background: $sidebar_background;
-  padding: 0.5em;
-  width: 140px;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  border-right: 1px solid $border_color;
-  display: flex;
-  flex-direction: column;
+.navigation {
+  // background: $sidebar_background;
+  // padding: 0.5em;
+  // width: 140px;
+  // height: 100%;
+  // // position: fixed;
+  // top: 0;
+  // left: 0;
+  // border-right: 1px solid $border_color;
+  // display: flex;
+  // flex-direction: column;
 
   button {
     background: $button_background;
@@ -108,4 +108,39 @@ li {
 .active {
   background-color: $link_background;
   color: $link_color;
+}
+
+.mobile-sidebar{
+  display: none;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+
+  .mobile-sidebar {
+    display: block;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .navigation {
+    margin-top: 0;
+  }
+
+  .mobile-sidebar {
+    display: flex;
+    position: overlay;
+    // flex-direction: column;
+    // position: absolute;
+    // // top: 80px;
+    // height: 100%;
+    // width: 100vw;
+    background: $link_background;
+    // opacity: 0.8;
+  }
 }

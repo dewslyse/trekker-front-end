@@ -1,30 +1,25 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+// import { useNavigate } from 'react-router-dom';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Item from './Item';
 import '../styles/destinations.scss';
-
-// const responsive = [
-//   { width: 1, itemsToShow: 1 },
-//   { width: 550, itemsToShow: 2 },
-//   { width: 768, itemsToShow: 3 },
-//   { width: 1200, itemsToShow: 4 },
-// ];
+// import mobilemenu from '../images/mobilemenu.png';
 
 const responsive = {
   desktop: {
-    breakpoint: { max: 1200, min: 768 },
+    breakpoint: { max: 1200, min: 600 },
     items: 3,
     // slidesToSlide: 3, // optional, default to 1.
   },
   tablet: {
-    breakpoint: { max: 768, min: 464 },
+    breakpoint: { max: 600, min: 464 },
     items: 2,
-    // slidesToSlide: 3, // optional, default to 1.
+    // slidesToSlide: 9, // optional, default to 1.
   },
   mobile: {
-    breakpoint: { max: 464, min: 0 },
+    breakpoint: { max: 464, min: 300 },
     items: 1,
     // slidesToSlide: 1, // optional, default to 1.
   },
@@ -32,8 +27,16 @@ const responsive = {
 
 const Destinations = () => {
   const destinations = useSelector((state) => state.destinations);
+  // const navigate = useNavigate();
+  // const handleMenu = () => {
+  //   navigate('/login');
+  // };
+
   return (
     <div className="destinations_container">
+      {/* <nav>
+        <img src={mobilemenu} className="menu" alt="menu" />
+      </nav> */}
       <h1 className="heading title">LATEST SAFARIS</h1>
       <p className="sub title">Have a funtastic experience</p>
       <p className="sub1 title">```````````````````````</p>

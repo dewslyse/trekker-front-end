@@ -10,23 +10,29 @@ body {
   //position: relative;
 }
 
+
 // DESTINATIONS
 // Carousel
 
 .destinations_container {
   width: 80vw;
-  height: 100vh;
+  height: 100%;
   display: flex;
   position: right;
   flex-direction: column;
   justify-content: center;
   padding-left: 9.25rem;
   overflow-x: hidden;
-  // margin-right: -9rem;
+  position: static;
+}
+
+.menu {
+  display: none;
 }
 
 .carousel {
   width: 100%;
+  height: 100%;
   vertical-align: middle;
   display: flex;
   align-items: baseline;
@@ -99,11 +105,12 @@ body {
 }
 
 .dabout {
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 2rem 2rem 2rem;
   font-family: $font-family;
   font-weight: bold;
   color: #c8c8c8;
   font-size: 0.7rem;
+  margin-top: -0.5rem;
 }
 
 .btn {
@@ -124,22 +131,24 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  vertical-align: middle;
   color: #fff;
-  background: $link_background !important;
+  background: $arrow_before !important;
+  margin-top: 4rem;
+
+  &:hover {
+    background: $link_background !important;
+  }
 }
 
 .react-multiple-carousel__arrow--left {
   border-radius: 0 4rem 4rem 0 !important;
   align-self: center;
-  // margin-top: 5rem;
-  //margin-right: 3rem;
 }
 
 .react-multiple-carousel__arrow--right {
   border-radius: 4rem 0  0 4rem !important;
   align-self: center;
-  //position: fixed;
-  //margin-top: 5rem;
 }
 
 .react-multiple-carousel__arrow::before {
@@ -148,4 +157,72 @@ body {
   margin-top: 0.5rem;
   cursor: pointer;
   display: block;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .destinations_container {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .dimage {
+    width: 95%;
+    border-radius: 100%;
+    height: 95%;
+  }
+  // .react-multiple-carousel__item {
+  //   margin: -3rem;
+  // }
+
+  .react-multiple-carousel-track {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .menu {
+    display: block;
+    width: 25px;
+    height: 20px;
+    margin-left: 2%;
+    margin-top: 15px;
+  }
+
+  // #mobile-menu {
+  //   display: flex;
+  //   background-color: #ec5242;
+  //   opacity: 0.94;
+  //   height: 100vh;
+  //   width: 100vw;
+  //   position: fixed;
+  //   top: 0;
+  //   flex-direction: column;
+  //   padding: 8%;
+  //   transition: 0.5s;
+  //   transform: translateX(-100%);
+  // }
+
+  // #menu-exit {
+  //   text-decoration: none;
+  //   color: #000;
+  //   font-size: 42px;
+  //   align-self: flex-end;
+  // }
+
+  // #menu-exit:hover {
+  //   cursor: pointer;
+  // }
+
+  // .menu-link {
+  //   margin-bottom: 20px;
+  // }
+
+  // .menu-link a {
+  //   font-family: "lato", sans-serif;
+  //   font-weight: 600;
+  //   font-size: 32px;
+  //   line-height: 44px;
+  //   color: #000;
+  //   text-decoration: none;
+  // }
 }
