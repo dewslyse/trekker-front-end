@@ -7,6 +7,7 @@ import Sidebar from '../components/Sidebar';
 import { addReservation } from '../store/actions/reservationActions';
 import { fetchDestinations } from '../store/actions/destinationActions';
 import 'react-datepicker/dist/react-datepicker.css';
+import './Reservation.scss';
 
 const Reservations = () => {
   const destinations = useSelector((state) => state.destinations);
