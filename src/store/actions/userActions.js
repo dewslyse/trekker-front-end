@@ -1,16 +1,18 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import api from '../../api/apiRequests';
-import { showNotification } from '../reducers/uiReducers';
+import { hideNotification, showNotification } from '../reducers/uiReducers';
 
 const registerUser = createAsyncThunk(
   'user/register',
   async (user, thunkAPI) => {
     try {
       const response = await api.post('/registrations', user, { withCredentials: true });
-      thunkAPI.dispatch(showNotification({ message: 'User registered successfully', isError: false }));
+      thunkAPI.dispatch(showNotification({ message: 'User registered successfully', isError: false, isOpen: true }));
+      setTimeout(() => thunkAPI.dispatch(hideNotification()), 3000);
       return response.data;
     } catch (error) {
-      thunkAPI.dispatch(showNotification({ message: error.message, isError: true }));
+      thunkAPI.dispatch(showNotification({ message: error.message, isError: true, isOpen: true }));
+      setTimeout(() => thunkAPI.dispatch(hideNotification()), 3000);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   },
@@ -21,10 +23,12 @@ const loginUser = createAsyncThunk(
   async (user, thunkAPI) => {
     try {
       const response = await api.post('/sessions', user, { withCredentials: true });
-      thunkAPI.dispatch(showNotification({ message: 'User logged in successfully', isError: false }));
+      thunkAPI.dispatch(showNotification({ message: 'User logged in successfully', isError: false, isOpen: true }));
+      setTimeout(() => thunkAPI.dispatch(hideNotification()), 3000);
       return response.data;
     } catch (error) {
-      thunkAPI.dispatch(showNotification({ message: 'Invalid username or password', isError: true }));
+      thunkAPI.dispatch(showNotification({ message: 'Invalid username or password', isError: true, isOpen: true }));
+      setTimeout(() => thunkAPI.dispatch(hideNotification()), 3000);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   },

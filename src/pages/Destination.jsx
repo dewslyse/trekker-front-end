@@ -1,7 +1,11 @@
 import React from 'react';
+import Sidebar from '../components/Sidebar';
 
 const Destination = () => (
-  <div>Destination</div>
+  <>
+    <Sidebar />
+    <div>Destination</div>
+  </>
 );
 
 export default Destination;

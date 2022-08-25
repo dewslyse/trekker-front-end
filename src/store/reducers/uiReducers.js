@@ -5,6 +5,7 @@ const initialState = {
   notification: {
     message: '',
     isError: false,
+    isOpen: false,
   },
 };
 
@@ -16,7 +17,7 @@ const uiSlice = createSlice({
       state.notification = payload;
     },
     hideNotification: (state) => {
-      state.notification = initialState.notification;
+      state.notification.isOpen = false;
     },
   },
 });

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import Button from 'react-bootstrap/Button';
 import { useSelector, useDispatch } from 'react-redux';
 import Card from 'react-bootstrap/Card';
 import { removeReservation, fetchReservations } from '../store/actions/reservationActions';

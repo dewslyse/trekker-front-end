@@ -1,16 +1,18 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { registerUser } from '../store/actions/userActions';
-import { hideNotification } from '../store/reducers/uiReducers';
+import { hideNotification, showNotification } from '../store/reducers/uiReducers';
 import trekker from '../trekker.png';
 import styles from './Login.module.scss';
 
 const Register = () => {
   const userRef = useRef();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+  const loggedIn = localStorage.getItem('LOGGED_IN');
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
@@ -29,6 +31,12 @@ const Register = () => {
   useEffect(() => {
     userRef.current.focus();
   }, []);
+
+  if (loggedIn) {
+    navigate('/destinations');
+    dispatch(showNotification({ message: 'You already signed in', isError: true, isOpen: true }));
+    setTimeout(() => dispatch(hideNotification()), 3000);
+  }
 
   const onInputChange = (e) => {
     setUser({
