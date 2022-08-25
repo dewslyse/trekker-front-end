@@ -8,6 +8,7 @@ const addDestination = createAsyncThunk(
     try {
       const response = await api.post('/destinations', destination, { withCredentials: true });
       thunkAPI.dispatch(showNotification({ message: 'Destination added successfully', isError: false, isOpen: true }));
+      setTimeout(() => thunkAPI.dispatch(hideNotification()), 3000);
       return response.data;
     } catch (error) {
       thunkAPI.dispatch(showNotification({ message: error.message, isError: true, isOpen: true }));
@@ -23,6 +24,7 @@ const removeDestination = createAsyncThunk(
     try {
       await api.delete(`/destinations/${id}`, { withCredentials: true });
       thunkAPI.dispatch(showNotification({ message: 'Destination removed successfully', isError: false, isOpen: true }));
+      setTimeout(() => thunkAPI.dispatch(hideNotification()), 3000);
       return id;
     } catch (error) {
       thunkAPI.dispatch(showNotification({ message: error.message, isError: true, isOpen: true }));
