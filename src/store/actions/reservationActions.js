@@ -36,13 +36,10 @@ const removeReservation = createAsyncThunk(
   'reservation/remove',
   async (id, thunkAPI) => {
     try {
-<<<<<<< HEAD
       await api.delete(`/destinations/:id/reservations/${id}`, { withCredentials: true });
       thunkAPI.dispatch(showNotification({ message: 'Reservation removed successfully', isError: false, isOpen: true }));
-=======
       await api.delete(`/reservations/${id}`, { withCredentials: true });
       thunkAPI.dispatch(showNotification({ message: 'Reservation removed successfully', isError: false }));
->>>>>>> dev
       return id;
     } catch (error) {
       thunkAPI.dispatch(showNotification({ message: error.message, isError: true }));
