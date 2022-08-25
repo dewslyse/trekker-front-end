@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import Navigation from '../Navigation';
+import trekker from '../trekker.png'
 
 const links = [
   { text: 'Home', location: '/' },
@@ -23,8 +24,10 @@ test.each(links)(
   },
 );
 
-test('Check if have logo and link to home page', () => {
-  render(<Navigation />);
-  const logoDom = screen.getByTestId(/trekker/);
-  expect(logoDom).toHaveAttribute('to', '/Destiantions');
+describe('Logo', () => {
+  test('Logo must have src = "/logo.svg" and alt = "Logo"', () => {
+    render(<Navigation />);
+    const logo = screen.getByRole('img');
+    expect(logo).toHaveAttribute('alt', 'Logo');
+  });
 });
