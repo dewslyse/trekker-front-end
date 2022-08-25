@@ -35,6 +35,9 @@ jobs:
           [ -f .stylelintrc.json ] || wget https://raw.githubusercontent.com/microverseinc/linters-config/master/react-redux/.stylelintrc.json
       - name: Stylelint Report
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 66d43bf4ad7d095d17c7754b48810f3c07b2da19
         run: npx stylelint "**/*.{css,scss}"
   nodechecker:
     name: node_modules checker
