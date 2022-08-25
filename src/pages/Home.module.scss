@@ -1,0 +1,124 @@
+.containerSlider {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0.5rem 1rem rgba(167, 144, 144, 0.1);
+}
+
+.carouselInner {
+  white-space: nowrap;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 0;
+  transition: opacity ease-in-out 0.4s;
+}
+
+.slideContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 70%;
+  text-align: center;
+  color: #fff;
+  z-index: 1;
+  transition: all ease-in-out 0.4s;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 1rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+
+  .slideContentImg {
+    height: 70%;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &Main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+
+    .contentWrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    a {
+      font-size: 1.6rem;
+      font-weight: 700;
+      border: 1px solid var(--color-primary);
+      border-radius: 0 0.5rem 0.5rem 0;
+      background-color: #97bf02;
+      color: #fff;
+      cursor: pointer;
+      transition: all ease-in-out 0.4s;
+      text-decoration: none;
+      padding: 2.2rem 3rem;
+
+      &:hover {
+        border: 1px solid var(--color-primary-dark);
+        background-color: var(--color-primary-dark);
+        color: #fff;
+      }
+    }
+  }
+
+  &Side {
+    background-color: #fff;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 15rem;
+    border-radius: 0.5rem 0 0 0.5rem;
+
+    &Main {
+      color: #000;
+    }
+
+    &Content {
+      color: red;
+    }
+  }
+}
+
+.activeAnim {
+  opacity: 1;
+}
+
+.containerDots {
+  position: absolute;
+  bottom: 3rem;
+  right: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.dot {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 2px solid #e8e8e8;
+  margin: 0.5rem;
+  cursor: pointer;
+
+  &.active {
+    background-color: #97bf02;
+  }
+}
