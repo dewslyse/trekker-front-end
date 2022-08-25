@@ -25,7 +25,7 @@ const addReservation = createAsyncThunk(
       thunkAPI.dispatch(showNotification({ message: 'Reservation added successfully', isError: false, isOpen: true }));
       return response.data;
     } catch (error) {
-      thunkAPI.dispatch(showNotification({ message: error.message, isError: true }));
+      thunkAPI.dispatch(showNotification({ message: error.message, isError: true, isOpen: true }));
       setTimeout(() => thunkAPI.dispatch(hideNotification()), 3000);
       return thunkAPI.rejectWithValue(error.response.data);
     }
@@ -38,11 +38,9 @@ const removeReservation = createAsyncThunk(
     try {
       await api.delete(`/destinations/:id/reservations/${id}`, { withCredentials: true });
       thunkAPI.dispatch(showNotification({ message: 'Reservation removed successfully', isError: false, isOpen: true }));
-      await api.delete(`/reservations/${id}`, { withCredentials: true });
-      thunkAPI.dispatch(showNotification({ message: 'Reservation removed successfully', isError: false }));
       return id;
     } catch (error) {
-      thunkAPI.dispatch(showNotification({ message: error.message, isError: true }));
+      thunkAPI.dispatch(showNotification({ message: error.message, isError: true, isOpen: true }));
       setTimeout(() => thunkAPI.dispatch(hideNotification()), 3000);
       return thunkAPI.rejectWithValue(error.response.data);
     }

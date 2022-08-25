@@ -7,10 +7,10 @@ const registerUser = createAsyncThunk(
   async (user, thunkAPI) => {
     try {
       const response = await api.post('/registrations', user, { withCredentials: true });
-      thunkAPI.dispatch(showNotification({ message: 'User registered successfully', isError: false }));
+      thunkAPI.dispatch(showNotification({ message: 'User registered successfully', isError: false, isOpen: true }));
       return response.data;
     } catch (error) {
-      thunkAPI.dispatch(showNotification({ message: error.message, isError: true }));
+      thunkAPI.dispatch(showNotification({ message: error.message, isError: true, isOpen: true }));
       return thunkAPI.rejectWithValue(error.response.data);
     }
   },
@@ -21,10 +21,10 @@ const loginUser = createAsyncThunk(
   async (user, thunkAPI) => {
     try {
       const response = await api.post('/sessions', user, { withCredentials: true });
-      thunkAPI.dispatch(showNotification({ message: 'User logged in successfully', isError: false }));
+      thunkAPI.dispatch(showNotification({ message: 'User logged in successfully', isError: false, isOpen: true }));
       return response.data;
     } catch (error) {
-      thunkAPI.dispatch(showNotification({ message: 'Invalid username or password', isError: true }));
+      thunkAPI.dispatch(showNotification({ message: 'Invalid username or password', isError: true, isOpen: true }));
       return thunkAPI.rejectWithValue(error.response.data);
     }
   },
