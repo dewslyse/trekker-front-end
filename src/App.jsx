@@ -11,6 +11,7 @@ import RequireAuth from './components/RequireAuth';
 import Reservations from './pages/Reservation';
 import Notification from './components/Notification';
 import Destination from './pages/Destination';
+import Reservation from './components/SingleReservations';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -39,6 +40,8 @@ const App = () => {
           <Route element={<RequireAuth />}>
             <Route path="destinations/:id" element={<Destination />} />
             <Route path="destinations/:id/reservations" element={<Reservations />} />
+            <Route path="reservations/delete" element={<Reservation />} />
+
             <Route path="/*" element={<Reservations />} />
           </Route>
         </Routes>
