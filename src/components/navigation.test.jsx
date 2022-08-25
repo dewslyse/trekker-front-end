@@ -25,7 +25,7 @@ test.each(links)(
 );
 
 describe('Logo', () => {
-  test('Logo must have src = "/logo.svg" and alt = "Logo"', () => {
+  test('Logo must have src = "/trekker.png" and alt = "Logo"', () => {
     render(<Navigation />);
     const logo = screen.getByRole('img');
     expect(logo).toHaveAttribute('alt', 'Logo');
