@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import RequireAuth from './components/RequireAuth';
+import Destination from './pages/Destination';
 import Reservations from './components/Reservation';
 import Reservation from './components/SingleReservations';
 
@@ -28,7 +29,7 @@ const App = () => {
           <Route path="destinations" element={<Destinations />} />
           {/* Protected routes */}
           <Route element={<RequireAuth />}>
-            <Route path="destinations/:id" element={<div>Destination</div>} />
+            <Route path="destinations/:id" element={<Destination />} />
             <Route path="destinations/:id/reservations" element={<Reservations />} />
             <Route path="reservations/delete" element={<Reservation />} />
 
