@@ -1,0 +1,23 @@
+.notification {
+  z-index: 500;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 20%;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.success {
+  color: green;
+  border: 1px solid green;
+  border-radius: 5px;
+}
+
+.errors {
+  color: red;
+  border: 1px solid red;
+  border-radius: 5px;
+}
