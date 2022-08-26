@@ -31,7 +31,7 @@ const Destination = ({ handleDestination }) => {
             <div className={destinationDetails}>
               <h2>{destination.name}</h2>
               <h3>{destination.city_name}</h3>
-              <p >{destination.description}</p>
+              <p>{destination.description}</p>
               <div className={destinationExtras}>
                 <span>Adventure</span>
                 <span>Family time</span>
