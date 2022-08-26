@@ -8,14 +8,15 @@
 
 - HTML, CSS & SCSS
 - JavaScript
-- Ruby on Rails
 - React
-- OOP
 - Webpack
 
 ## Live demo
 
-[Follow the link]()
+🔗 [Follow the link](https://mv-trekker.netlify.app/)
+
+
+🔗 [Link to Back-end](https://github.com/dewslyse/trekker-back-end)
 
 
 
@@ -23,9 +24,12 @@
 
  Project Start| Project Done
 ------------- | -------------
-![]()  | ![]()
+![Initial State](https://user-images.githubusercontent.com/8092327/184234854-3ca0bb13-d75a-4eb6-ad46-e2701a4ee11a.png)  | ![Final State](https://user-images.githubusercontent.com/8092327/186813311-3ee0f122-d999-4d34-91df-85c576ee77e4.png)
 
-### Preview
+
+## Screenshot
+
+<img src="./screenshot.png"> 
 
 
 
@@ -40,6 +44,9 @@ To get a local copy up and running follow these simple example steps.
 - go to the repository folder in your command prompt.
 - run `bundle install`.
 - run `npm install`
+
+### Test 
+- run `npm run test`
 
 ## Author
 👤 **Teshome Kurabachew**
@@ -78,5 +85,8 @@ Feel free to check the [issues page](../../issues/).
 Give a ⭐️ if you like this project!
 
 ## Acknowledgments
+Original design idea by: [Murak Korkmaz](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign)
 
-- Microverse
+## 📝 License
+
+This project is [MIT](./LICENSE) licensed.
