@@ -1,12 +1,12 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Sidebar from '../components/Sidebar';
 import 'react-multi-carousel/lib/styles.css';
-import { useNavigate } from 'react-router-dom';
 import styles from './Destinations.module.scss';
 
 const Destinations = () => {
@@ -14,7 +14,10 @@ const Destinations = () => {
 
   const navigate = useNavigate();
 
-  const { card, cardTop, cardBottom, carouselContainer, carouselTitle } = styles;
+  const {
+    card, cardTop, cardBottom, carouselContainer, carouselTitle,
+  } = styles;
+
   const settings = {
     dots: true,
     infinite: false,
@@ -60,10 +63,10 @@ const Destinations = () => {
 
       <div className={carouselContainer}>
         <h1 className={carouselTitle}>LATEST SAFARIS</h1>
-        <Slider {...settings} >
+        <Slider {...settings}>
           {destinations.map((destination) => (
-            <div>
-              <div className={card} key={destination.id}>
+            <div key={destination.id}>
+              <div className={card}>
                 <div className={cardTop}>
                   <img src={destination.image_url} alt={destination.name} />
                   <h2>{destination.city_name}</h2>
