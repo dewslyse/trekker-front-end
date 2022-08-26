@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Carousel from 'react-multi-carousel';
-import Sidebar from '../components/Sidebar';
+// import Sidebar from '../components/Sidebar';
 // import { useNavigate } from 'react-router-dom';
 import 'react-multi-carousel/lib/styles.css';
 import Item from './Item';
@@ -46,7 +46,8 @@ const Destinations = () => {
                 <img
                   className="dimage"
                   src={destination.image_url}
-                  alt={destination.name} />
+                  alt={destination.name} 
+                />
               </div>
             </Item>
             <h5 className="dname">{destination.name}</h5>
@@ -55,7 +56,7 @@ const Destinations = () => {
           </div>
         ))}
       </Carousel>
-    </div>      
+    </div>
   );
 };
 
