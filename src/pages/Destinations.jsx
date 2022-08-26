@@ -46,7 +46,7 @@ const Destinations = () => {
                 <img
                   className="dimage"
                   src={destination.image_url}
-                  alt={destination.name} 
+                  alt={destination.name}
                 />
               </div>
             </Item>
