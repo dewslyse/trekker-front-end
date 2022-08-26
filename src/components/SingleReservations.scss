@@ -2,6 +2,11 @@
   display: flex;
 }
 
+.src {
+  max-height: 100vh;
+  overflow: auto;
+}
+
 #ct {
   display: flex;
   flex-direction: column;
@@ -53,6 +58,7 @@
   flex-wrap: wrap;
   max-width: 120rem;
   margin: 5rem auto;
+  margin-top: 10rem;
   justify-content: center;
 
   .card {
@@ -78,7 +84,10 @@
 }
 
 .resrvation-title {
-  text-align: center;
-  padding: 1rem;
+  width: 100%;
+  margin-left: 5rem;
   margin-bottom: 2rem;
+  position: fixed;
+  z-index: 1000;
+  background-color: var(--white);
 }

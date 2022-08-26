@@ -2,10 +2,9 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useParams, Link } from 'react-router-dom';
-// import Sidebar from '../components/Sidebar';
 import { fetchDestinations } from '../store/actions/destinationActions';
-// import './Destination.module.scss';
 import styles from './Destination.module.scss';
+import Sidebar from '../components/Sidebar';
 
 const Destination = ({ handleDestination }) => {
   const destinations = useSelector((state) => state.destinations);
@@ -21,8 +20,8 @@ const Destination = ({ handleDestination }) => {
   }, []);
   const params = useParams();
   return (
-    <>
-      {/* <Sidebar /> */}
+    <div className="page-container">
+      <Sidebar />
       <div className={destinationContainer}>
         {destinations.map((destination) => (
           destination.id === parseInt(params.id, 10) && (
@@ -31,7 +30,7 @@ const Destination = ({ handleDestination }) => {
             <div className={destinationDetails}>
               <h2>{destination.name}</h2>
               <h3>{destination.city_name}</h3>
-              <p >{destination.description}</p>
+              <p>{destination.description}</p>
               <div className={destinationExtras}>
                 <span>Adventure</span>
                 <span>Family time</span>
@@ -46,7 +45,7 @@ const Destination = ({ handleDestination }) => {
           )
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

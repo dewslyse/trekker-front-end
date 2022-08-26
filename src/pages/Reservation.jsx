@@ -27,7 +27,7 @@ const Reservations = ({ id }) => {
   };
 
   return (
-    <>
+    <div className="page-container">
       <Sidebar />
       <div
         className="r-c"
@@ -74,7 +74,7 @@ const Reservations = ({ id }) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

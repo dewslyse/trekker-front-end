@@ -27,22 +27,23 @@ const Reservation = () => {
 
   if (!reservationns.length) {
     return (
-      <>
+      <div className="page-container">
         <Sidebar />
         <div className="noReservation">
           <h3>You have no reservations</h3>
         </div>
-      </>
+      </div>
     );
   }
 
   return (
-    <>
+    <div className="page-container">
       <Sidebar />
-      <h3 className="resrvation-title">Reservations</h3>
-      <div className="wrp">
+      <div className="src">
+        <h3 className="resrvation-title">Reservations</h3>
+        <div className="wrp">
 
-        {
+          {
        destinations.map((destination) => (
          reservationns.map((reservation) => (
            destination.id === reservation.destination_id && (
@@ -74,8 +75,9 @@ const Reservation = () => {
        ))
 
     }
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

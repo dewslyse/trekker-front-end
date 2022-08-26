@@ -1,11 +1,19 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
+import { MdPlace } from 'react-icons/md';
+import { GiArchiveRegister } from 'react-icons/gi';
+import {
+  RiMapPinAddLine, RiDeleteBin5Fill, RiLogoutCircleFill, RiLoginCircleFill, RiAccountBoxFill,
+} from 'react-icons/ri';
 import { logoutUser } from '../store/actions/userActions';
 import { logout } from '../store/reducers/userReducer';
-import trekkerlogo from '../images/trekkerlogo.png';
-import SidebarLinks from './SidebarLinks';
-import '../styles/sidebar.scss';
+import trekkerlogo from '../trekker.png';
+import styles from './Sidebar.module.scss';
+
+const {
+  sidebar, logo, links, link, logoImg, linksItem, icons, button,
+} = styles;
 
 const Sidebar = () => {
   const isLoggedIn = localStorage.getItem('LOGGED_IN');
@@ -20,18 +28,64 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="sidebar">
-      <img src={trekkerlogo} alt="logo" className="logo" />
-
-      <SidebarLinks />
-
-      <div className="links">
-        {!isLoggedIn && (<button type="button" className="li"><Link to="/login" className="enter">Login</Link></button>)}
-        <br />
-        {!isLoggedIn && (<button type="button" className="li"><Link to="/register" className="enter">Register</Link></button>)}
-        <br />
-        {isLoggedIn && (<button type="button" className="logout" style={{ marginBottom: 20 }} onClick={handleLogout}>Logout</button>)}
+    <div className={sidebar}>
+      <div className={logo}>
+        <img src={trekkerlogo} alt="logo" className={logoImg} />
       </div>
+
+      <ul className={links}>
+
+        <li className={linksItem}>
+          <Link to="/destinations" className={link}>
+            <MdPlace className={icons} />
+            Destinations
+          </Link>
+        </li>
+        <li className={linksItem}>
+          <Link to="/reservations/myreservation" className={link}>
+            <GiArchiveRegister className={icons} />
+            My Reservations
+          </Link>
+        </li>
+        {isLoggedIn === 'selase' && (
+        <li className={linksItem}>
+          <Link to="/addsafari" className={link}>
+            <RiMapPinAddLine className={icons} />
+            Add Safari
+          </Link>
+        </li>
+        )}
+        {isLoggedIn === 'selase' && (
+        <li className={linksItem}>
+          <Link to="/deletesafari" className={link}>
+            <RiDeleteBin5Fill className={icons} />
+            Delete Safari
+          </Link>
+        </li>
+        )}
+        {!isLoggedIn && (
+        <li className={linksItem}>
+          <Link to="/login" className={link}>
+            <RiLoginCircleFill className={icons} />
+            Login
+          </Link>
+        </li>
+        )}
+        {!isLoggedIn && (
+        <li className={linksItem}>
+          <Link to="/register" className={link}>
+            <RiAccountBoxFill className={icons} />
+            Register
+          </Link>
+        </li>
+        )}
+        {isLoggedIn && (
+        <button type="button" className={button} style={{ marginBottom: 20 }} onClick={handleLogout}>
+          <RiLogoutCircleFill className={icons} />
+          Logout
+        </button>
+        )}
+      </ul>
     </div>
   );
 };

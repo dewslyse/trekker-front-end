@@ -45,7 +45,7 @@ const App = () => {
           <Route element={<RequireAuth />}>
             <Route path="destinations/:id" element={<Destination handleDestination={handleDestination} />} />
             <Route path="reservations" element={<Reservations id={destinationID} />} />
-            <Route path="reservations/delete" element={<Reservation />} />
+            <Route path="reservations/myreservation" element={<Reservation />} />
             <Route path="/*" element={<Destination />} />
           </Route>
         </Routes>
