@@ -1,0 +1,75 @@
+.destinationContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0 2rem;
+}
+
+.destinationInner {
+  max-width: 1200px;
+  // width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  img {
+    flex-basis: 40%;
+    width: 55%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-right: 50px;
+  }
+}
+
+.destinationDetails {
+  text-align: right;
+  padding: 0 3rem;
+
+  h2 {
+    font-size: 2.25rem;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  h3 {
+    color: #6e9e01;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: -1.5rem;
+    padding-bottom: 1rem;
+  }
+
+  button {
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 1rem 4rem;
+    background-color: #97bf02;
+    color: #fff;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    cursor: pointer;
+  }
+}
+
+.destinationFee {
+  color: #6e9e01;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.destinationExtras {
+  margin: 5rem 0;
+
+  :nth-child(odd) {
+    background-color: #e8e8e8;
+  }
+
+  span {
+    display: block;
+    padding: 10px;
+    font-weight: 700;
+  }
+}

@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Slab:wght@300;700&display=swap');
+
+:root {
+  --white: #fff;
+  --light-grey: #fafafa;
+  --grey-border: #e8e8e8;
+  --warm-grey: #888;
+  --color-primary: #97bf02;
+  --color-primary-dark: #6e9e01;
+  --color-danger: #e80000;
+}
+
+// ///////////////////////////// Global Reset
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; // 1rem = 10px, 10px/16px = 62.5%
+
+  @media (max-width: 768px) {
+    font-size: 56.25%; // 1rem = 10px, 10px/16px = 56.25%
+  }
+
+  @media (max-width: 560) {
+    font-size: 50%; // 1rem = 10px, 10px/16px = 50%
+  }
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  font-size: 1.6rem;
+}
+
+h2 {
+  font-size: 4.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 3.5rem;
+  }
+
+  @media (max-width: 560px) {
+    font-size: 2rem;
+  }
+}
+
+h3 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-bottom: 1px solid var(--grey-border);
+}
+
+.page-container {
+  display: flex;
+}
