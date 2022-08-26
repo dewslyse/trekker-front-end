@@ -109,3 +109,24 @@ export default Destinations;
     </div>
   ))}
 </Carousel> */
+
+/* <h5 className="dname">{destination.name}</h5>
+<p className="sub1 btn">```````````````````````</p>
+<p className="dabout">{destination.description}</p> */
+
+/* <h1 className="heading title">LATEST SAFARIS</h1>
+<p className="sub title">Have a funtastic experience</p>
+<p className="sub1 title">```````````````````````</p>
+<Carousel responsive={responsive} className="carousel" infinite>
+  {destinations.map((destination) => (
+    <div key={destination.id} className={carouselCard}>
+      <Item className="img">
+        <img
+          className="dimage"
+          src={destination.image_url}
+          alt={destination.name}
+        />
+      </Item>
+    </div>
+  ))}
+</Carousel> */
