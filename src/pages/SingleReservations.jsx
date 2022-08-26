@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Card from 'react-bootstrap/Card';
 import { removeReservation, fetchReservations } from '../store/actions/reservationActions';
 import './SingleReservations.scss';
-import Sidebar from './Sidebar';
+import Sidebar from '../components/Sidebar';
 
 const Reservation = () => {
   const reservations = useSelector((state) => state.reservations);
@@ -71,9 +71,7 @@ const Reservation = () => {
            </div>
            )
          ))
-
        ))
-
     }
         </div>
       </div>

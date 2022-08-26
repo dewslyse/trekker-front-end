@@ -30,7 +30,7 @@
         color: var(--color-dark);
         font-weight: 500;
         padding: 0.5rem 2rem;
-        transition: all .2s;
+        transition: all 0.2s;
         display: inline-block;
         width: 100%;
 
@@ -38,7 +38,7 @@
           color: var(--white);
           background-color: var(--color-primary);
         }
-  
+
         .icons {
           width: 2rem;
           height: 2rem;
@@ -46,7 +46,7 @@
 
           &:hover {
             color: var(--white);
-          }  
+          }
         }
       }
     }
@@ -60,6 +60,5 @@
       padding: 0.5rem;
       border-radius: 0.5rem;
     }
-
   }
 }

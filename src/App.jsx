@@ -11,7 +11,7 @@ import RequireAuth from './components/RequireAuth';
 import Reservations from './pages/Reservation';
 import Notification from './components/Notification';
 import Destination from './pages/Destination';
-import Reservation from './components/SingleReservations';
+import Reservation from './pages/SingleReservations';
 
 const App = () => {
   const dispatch = useDispatch();

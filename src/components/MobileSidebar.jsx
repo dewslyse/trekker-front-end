@@ -11,8 +11,6 @@ const MobileSidebar = () => {
 
   const closeicon = <GrFormClose className="hamburger" size="40px" onClick={() => setOpen(!open)} />;
 
-  // const closeMenu = {} => setOpen(false);
-
   return (
     <div className="mobile-sidebar overlay">
       {open ? closeicon : menuicon}
