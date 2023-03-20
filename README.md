@@ -42,7 +42,6 @@ To get a local copy up and running follow these simple example steps.
 - open the command prompt in this directory.
 - write `https://github.com/dewslyse/trekker-front-end`.
 - go to the repository folder in your command prompt.
-- run `bundle install`.
 - run `npm install`
 
 ### Test 
